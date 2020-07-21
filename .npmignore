@@ -1,0 +1,11 @@
+example/
+.idea/
+ehthumbs.db
+Icon?
+Thumbs.db
+.project
+.settings
+.buildpath
+*.komodoproject
+*.sublime-project
+*.sublime-workspace
