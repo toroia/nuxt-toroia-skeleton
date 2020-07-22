@@ -1,6 +1,9 @@
 'use strict'
 
-module.exports = {
+export default {
+    components: '@nuxt/components',
+    proxy: '@nuxtjs/proxy',
+    auth: '@nuxtjs/auth',
     axios: {
         name: '@nuxtjs/axios',
         options: {
@@ -18,5 +21,7 @@ module.exports = {
             locales: ['fr'],
             defaultTimezone: 'Europe/Paris'
         }
-    }
+    },
+    vuetify: '@nuxtjs/vuetify',
+    webfontloader: 'nuxt-webfontloader'
 }

@@ -1,4 +1,7 @@
 # Nuxt Toroia Skeleton
+
+//TODO Description
+
 ## Integrated packages
 
 - [NuxtJS](https://github.com/nuxt/nuxt.js)

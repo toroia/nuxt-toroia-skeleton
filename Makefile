@@ -11,7 +11,7 @@ dev: ## Starts a development image
 	docker run -it --rm \
 		-v $(CURDIR):/app \
 		--name $(APP_NAME) \
-		-P \
+		-p 3000:3000 \
 		$(APP_IMAGE) sh -c "cd example && yarn dev"
 
 exec: ## Starts a bash environment in an image
