@@ -14,6 +14,7 @@ import { createStore } from './store.js'
 
 import nuxt_plugin_plugin_0a1f8d96 from 'nuxt_plugin_plugin_0a1f8d96' // Source: .\\vuetify\\plugin.js (mode: 'all')
 import nuxt_plugin_plugin_b0f021c2 from 'nuxt_plugin_plugin_b0f021c2' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_components_9c437154 from 'nuxt_plugin_components_9c437154' // Source: .\\toroia-skeleton\\src\\components.js (mode: 'all')
 import nuxt_plugin_moment_7898f016 from 'nuxt_plugin_moment_7898f016' // Source: .\\moment.js (mode: 'all')
 import nuxt_plugin_axios_e0644c7c from 'nuxt_plugin_axios_e0644c7c' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_plugin_a420201e from 'nuxt_plugin_plugin_a420201e' // Source: .\\auth\\plugin.js (mode: 'all')
@@ -198,6 +199,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_plugin_b0f021c2 === 'function') {
     await nuxt_plugin_plugin_b0f021c2(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_components_9c437154 === 'function') {
+    await nuxt_plugin_components_9c437154(app.context, inject)
   }
 
   if (typeof nuxt_plugin_moment_7898f016 === 'function') {

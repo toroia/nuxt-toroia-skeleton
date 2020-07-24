@@ -13,8 +13,8 @@ export default {
     telemetry: false,
     components: true,
     modules: [
-        "nuxt-toroia-skeleton"
-        // '../main'
+        // "nuxt-toroia-skeleton"
+        '../main'
     ],
     proxy: {
         '/api/': {
@@ -25,28 +25,24 @@ export default {
     },
     vuetify: {
         treeShake: true,
-        themes: {
-            light: {
-                primary: colors.lightGreen.base,
-                secondary: colors.teal.base,
-                accent: colors.cyan.base,
-                error: colors.red.base,
-                warning: colors.orange.base,
-                info: colors.blue.base,
-                success: colors.green.base
-            },
-            dark: {
-                primary: colors.lightGreen.base,
-                secondary: colors.teal.base,
-                accent: colors.cyan.base,
-                error: colors.red.base,
-                warning: colors.orange.base,
-                info: colors.blue.base,
-                success: colors.green.base
+        preset: "vue-cli-plugin-vuetify-preset-rally/preset",
+        theme: {
+            themes: {
+                dark: {
+                    primary: colors.lightBlue.base,
+                    secondary: colors.teal.base,
+                    tertiary: colors.teal.lighten1,
+                    accent: colors.cyan.base,
+                    error: colors.red.base,
+                    warning: colors.orange.base,
+                    info: colors.blue.base,
+                    success: colors.green.base
+                }
             }
         }
     },
     build: {
+        transpile: ["vue-cli-plugin-vuetify-preset-rally"],
         extend(config, ctx) {
         }
     }

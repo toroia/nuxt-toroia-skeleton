@@ -24,24 +24,22 @@ export default function (moduleOptions) {
 
     // for (const key in modules) {
     //     const module = modules[key]
-
-        // if (typeof module === 'object') {
-        //     module.options = typeof module.options === 'object'
-        //         ? module.options
-        //         : {}
-        //
-        //     this.addModule(module.name, {
-        //         ...module.options,
-        //         ...options[key]
-        //     })
-        // } else {
-        //     this.addModule(module, {
-        //         ...options[key]
-        //     })
-        // }
+    //
+    //     if (typeof module === 'object') {
+    //         module.options = typeof module.options === 'object'
+    //             ? module.options
+    //             : {}
+    //
+    //         this.addModule(module.name, {
+    //             ...module.options,
+    //             ...options[key]
+    //         })
+    //     } else {
+    //         this.addModule(module, {
+    //             ...options[key]
+    //         })
+    //     }
     // }
-
-
 
     this.addModule(['@nuxtjs/axios', {
         proxy: true,
@@ -65,12 +63,11 @@ export default function (moduleOptions) {
     this.addModule(['@nuxtjs/vuetify', {...options.vuetify}])
     this.addModule(['nuxt-webfontloader', {...options.webfontloader}])
 
-
-    // this.addPlugin({
-    //     src: resolve(__dirname, 'src/components.js'),
-    //     fileName: join('toroia-skeleton', 'src/components.js'),
-    //     options
-    // })
+    this.addPlugin({
+        src: resolve(__dirname, 'src/components.js'),
+        fileName: join('toroia-skeleton', 'src/components.js'),
+        options
+    })
 
     // this.addTemplate({
     //     src: resolve(__dirname, 'src/modules.js'),
@@ -78,25 +75,25 @@ export default function (moduleOptions) {
     //     options
     // })
 
-    // const {readdirSync} = require('fs')
-    // const foldersToSync = ['src/components']
-    //
-    // for (const pathString of foldersToSync) {
-    //     const path = resolve(__dirname, pathString)
-    //     for (const file of readdirSync(path)) {
-    //         this.addTemplate({
-    //             src: resolve(path, file),
-    //             fileName: join('toroia-skeleton', pathString, file),
-    //             options
-    //         })
-    //     }
-    // }
+    const {readdirSync} = require('fs')
+    const foldersToSync = ['src/components']
+
+    for (const pathString of foldersToSync) {
+        const path = resolve(__dirname, pathString)
+        for (const file of readdirSync(path)) {
+            this.addTemplate({
+                src: resolve(path, file),
+                fileName: join('toroia-skeleton', pathString, file),
+                options
+            })
+        }
+    }
 
     // this.options.srcDir = this.options.srcDir || 'src/'
 
     this.options.telemetry = this.options.telemetry || false
 
-    // this.options.components = this.options.components || true
+    this.options.components = this.options.components || true
 
     this.options.head.htmlAttrs = this.options.head.htmlAttrs || {}
     this.options.head.htmlAttrs.lang = this.options.head.htmlAttrs.lang || 'fr'
