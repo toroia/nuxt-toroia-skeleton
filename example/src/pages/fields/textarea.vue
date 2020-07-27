@@ -1,7 +1,7 @@
 <template lang="pug">
     v-row
         v-col(cols="12")
-            tor-wiki-api(:components="components")
+            tor-wiki-api(:jsdoc="jsdoc" :items="['TorFieldTextarea']")
     //v-row
         v-col(cols="12")
             h1.title
@@ -15,15 +15,13 @@
 </template>
 
 <script>
-    import TorFieldTextarea from "../../../../src/components/TorFieldTextarea"
+    import jsdoc from "~/assets/jsdoc.json"
 
     export default {
         name: 'FieldsTextareaPage',
 
         data: () => ({
-            components: {
-                TorFieldTextarea
-            }
+            jsdoc: jsdoc.filter(el => el._isVueDoc)
         })
     }
 </script>

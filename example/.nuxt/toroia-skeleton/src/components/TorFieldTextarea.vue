@@ -14,11 +14,17 @@
         name: 'TorFieldTextarea',
 
         props: {
+            /**
+             * @vue-prop {Boolean} filled - Initial counter's value
+             */
             filled: {
                 type: Boolean,
                 description: "Applique un style de saisie rempli",
                 default: true
             },
+            /**
+             * @vue-prop {Number} rows - Initial counter's value
+             */
             rows: {
                 type: Number,
                 default: 3

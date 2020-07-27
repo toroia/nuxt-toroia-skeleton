@@ -4,7 +4,7 @@
             template(v-for="entry in menu")
                 v-subheader(v-html="entry.text")
                 v-list-item(
-                    v-for="item in entry.list"
+                    v-for="item in entry.list" dense
                     :key="item.to" :to="item.to" nuxt
                 )
                     v-list-item-icon
