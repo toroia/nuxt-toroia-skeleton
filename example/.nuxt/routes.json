@@ -3,36 +3,42 @@
     "name": "comments-commentlist",
     "path": "/comments/commentlist",
     "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\comments\\\\commentlist.vue",
-    "chunkName": "pages/comments/commentlist"
+    "chunkName": "pages/comments/commentlist",
+    "_name": "_5b2b99df"
   },
   {
     "name": "comments-commentnew",
     "path": "/comments/commentnew",
     "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\comments\\\\commentnew.vue",
-    "chunkName": "pages/comments/commentnew"
+    "chunkName": "pages/comments/commentnew",
+    "_name": "_1bb0fd6f"
   },
   {
     "name": "comments-commentrow",
     "path": "/comments/commentrow",
     "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\comments\\\\commentrow.vue",
-    "chunkName": "pages/comments/commentrow"
+    "chunkName": "pages/comments/commentrow",
+    "_name": "_005a60a9"
   },
   {
     "name": "fields-text",
     "path": "/fields/text",
     "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\fields\\\\text.vue",
-    "chunkName": "pages/fields/text"
+    "chunkName": "pages/fields/text",
+    "_name": "_4890ed80"
   },
   {
     "name": "fields-textarea",
     "path": "/fields/textarea",
     "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\fields\\\\textarea.vue",
-    "chunkName": "pages/fields/textarea"
+    "chunkName": "pages/fields/textarea",
+    "_name": "_7924b74d"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_2ac5b0b0"
   }
 ]
