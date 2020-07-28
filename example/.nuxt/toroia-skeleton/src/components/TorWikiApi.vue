@@ -1,4 +1,4 @@
-<!--suppress CssUnusedSymbol, JSUnusedGlobalSymbols -->
+<!--suppress CssUnusedSymbol, JSUnusedGlobalSymbols, JSUnresolvedVariable -->
 <template lang="pug">
     v-card
         v-toolbar(:height="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs ? '160px' : '80px'" flat dark)
@@ -103,10 +103,16 @@
                 return null
             },
             currentProps() {
-                // if (this.getCurrentItem) {
-                //     return this.getCurrentItem._vueProps
-                // }
-                return []
+                let props = []
+                _.forEach(this.getItems, item => {
+                    _.forEach(item._vueProps, prop => {
+                        props.push({
+                            name: prop.name,
+                            description: item.description
+                        })
+                    })
+                })
+                return props
             },
             currentSlots() {
                 return []

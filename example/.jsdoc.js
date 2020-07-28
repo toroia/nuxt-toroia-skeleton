@@ -1,16 +1,14 @@
 module.exports = {
     plugins: [
-        'node_modules/jsdoc-vuejs',
-        // 'plugins/markdown'
+        'node_modules/jsdoc-vuejs'
     ],
     source: {
         include: [
-            'src/components/',
-            // 'README.md'
+            '../src/components/'
         ],
         includePattern: '\\.(vue|js)$'
     },
     opts: {
-        encoding: 'utf8',
+        encoding: 'utf8'
     }
 }

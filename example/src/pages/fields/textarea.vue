@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import jsdoc from "~/assets/jsdoc.json"
+    import jsdoc from "~~/.nuxt/jsdoc.json"
 
     export default {
         name: 'FieldsTextareaPage',

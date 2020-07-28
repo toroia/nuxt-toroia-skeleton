@@ -15,7 +15,7 @@
 
         props: {
             /**
-             * @vue-prop {Boolean} filled - Initial counter's value
+             * @vue-prop {Boolean} filled - Initial counter's valueaaaaqqdddssddddd
              */
             filled: {
                 type: Boolean,

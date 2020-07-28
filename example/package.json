@@ -3,11 +3,15 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
+        "docs": "jsdoc -X -c .jsdoc.js > .nuxt/jsdoc.json",
         "dev": "nuxt",
         "build": "nuxt build",
         "start": "nuxt start"
     },
     "dependencies": {
+        "@vuedoc/parser": "^2.4.0",
+        "jsdoc": "^3.6.5",
+        "jsdoc-vuejs": "^3.0.8",
         "nuxt": "^2.13.3",
         "nuxt-toroia-skeleton": "file:..",
         "vue-cli-plugin-vuetify-preset-rally": "^1.0.4"

@@ -1,5 +1,10 @@
 'use strict'
 
+import {exec} from 'child_process'
+
+// noinspection NpmUsedModulesInstalled
+import webpack from 'webpack'
+
 // noinspection NpmUsedModulesInstalled
 import colors from 'vuetify/es5/util/colors'
 
@@ -23,6 +28,9 @@ export default {
             ws: false
         }
     },
+    serverMiddleware: [
+        '~/middleware/jsdoc'
+    ],
     vuetify: {
         treeShake: true,
         preset: "vue-cli-plugin-vuetify-preset-rally/preset",
@@ -43,7 +51,17 @@ export default {
     },
     build: {
         transpile: ["vue-cli-plugin-vuetify-preset-rally"],
-        extend(config, ctx) {
+        plugins: [
+            new webpack.ProvidePlugin({
+                _: 'lodash'
+            })
+        ]
+    },
+    hooks: {
+        build: {
+            done() {
+                exec('yarn docs')
+            }
         }
     }
 }
