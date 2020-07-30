@@ -57,7 +57,10 @@
                 },
                 {
                     text: 'Sandbox',
-                    list: []
+                    list: [{
+                        text: 'SamSandbox',
+                        to: '/sandbox/samsandbox'
+                    }]
                 }
             ]
         })
