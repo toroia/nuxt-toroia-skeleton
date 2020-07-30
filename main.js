@@ -1,6 +1,7 @@
 'use strict'
 
 import {resolve, join} from "path"
+import fr from "vuetify/lib/locale/fr"
 
 // import modules from "./src/modules"
 
@@ -60,7 +61,15 @@ export default function (moduleOptions) {
     this.addModule(['@nuxt/components', {...options.components}])
     this.addModule(['@nuxtjs/proxy', {...options.proxy}])
     this.addModule(['@nuxtjs/auth', {...options.auth}])
-    this.addModule(['@nuxtjs/vuetify', {...options.vuetify}])
+    this.addModule(['@nuxtjs/vuetify', {
+        lang: {
+            locales: {
+                fr
+            },
+            current: 'fr'
+        },
+        ...options.vuetify
+    }])
     this.addModule(['nuxt-webfontloader', {...options.webfontloader}])
 
     this.addPlugin({
