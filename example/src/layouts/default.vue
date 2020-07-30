@@ -35,6 +35,18 @@
                         {
                             text: 'Textarea',
                             to: '/fields/textarea'
+                        },
+                        {
+                            text: 'FileUpload',
+                            to: '/fields/fileupload'
+                        },
+                        {
+                            text: 'Checkbox',
+                            to: '/fields/checkbox'
+                        },
+                        {
+                            text: 'Switch',
+                            to: '/fields/switch'
                         }
                     ]
                 },

@@ -3,42 +3,70 @@
     "name": "comments-commentlist",
     "path": "/comments/commentlist",
     "component": "/app/example/src/pages/comments/commentlist.vue",
-    "chunkName": "pages/comments/commentlist"
+    "chunkName": "pages/comments/commentlist",
+    "_name": "_5716e99c"
   },
   {
     "name": "comments-commentnew",
     "path": "/comments/commentnew",
     "component": "/app/example/src/pages/comments/commentnew.vue",
-    "chunkName": "pages/comments/commentnew"
+    "chunkName": "pages/comments/commentnew",
+    "_name": "_d1237bdc"
   },
   {
     "name": "comments-commentrow",
     "path": "/comments/commentrow",
     "component": "/app/example/src/pages/comments/commentrow.vue",
-    "chunkName": "pages/comments/commentrow"
+    "chunkName": "pages/comments/commentrow",
+    "_name": "_7c17a54c"
+  },
+  {
+    "name": "fields-checkbox",
+    "path": "/fields/checkbox",
+    "component": "/app/example/src/pages/fields/checkbox.vue",
+    "chunkName": "pages/fields/checkbox",
+    "_name": "_dddfc9e2"
+  },
+  {
+    "name": "fields-fileupload",
+    "path": "/fields/fileupload",
+    "component": "/app/example/src/pages/fields/fileupload.vue",
+    "chunkName": "pages/fields/fileupload",
+    "_name": "_6a014bc9"
+  },
+  {
+    "name": "fields-switch",
+    "path": "/fields/switch",
+    "component": "/app/example/src/pages/fields/switch.vue",
+    "chunkName": "pages/fields/switch",
+    "_name": "_5760da00"
   },
   {
     "name": "fields-text",
     "path": "/fields/text",
     "component": "/app/example/src/pages/fields/text.vue",
-    "chunkName": "pages/fields/text"
+    "chunkName": "pages/fields/text",
+    "_name": "_1777b979"
   },
   {
     "name": "fields-textarea",
     "path": "/fields/textarea",
     "component": "/app/example/src/pages/fields/textarea.vue",
-    "chunkName": "pages/fields/textarea"
+    "chunkName": "pages/fields/textarea",
+    "_name": "_7c702306"
   },
   {
     "name": "sandbox-samsandbox",
     "path": "/sandbox/samsandbox",
     "component": "/app/example/src/pages/sandbox/samsandbox.vue",
-    "chunkName": "pages/sandbox/samsandbox"
+    "chunkName": "pages/sandbox/samsandbox",
+    "_name": "_ebac0cec"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/app/example/src/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_7c6a22f0"
   }
 ]

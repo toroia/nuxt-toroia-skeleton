@@ -53,6 +53,9 @@
         "pug-plain-loader": "^1.0.0",
         "vue-cli-plugin-pug": "^1.0.7"
     },
+    "peerDependencies": {
+        "vuetify": "^2"
+    },
     "files": [
         "src",
         "main.js"
