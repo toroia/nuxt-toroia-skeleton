@@ -7,6 +7,7 @@ import TorFieldText from "./components/TorFieldText.vue"
 import TorFieldTextarea from "./components/TorFieldTextarea.vue"
 import TorFieldSelect from "./components/TorFieldSelect.vue"
 import TorFieldAutocomplete from "./components/TorFieldAutocomplete.vue"
+import TorFieldFileUpload from "./components/TorFieldFileUpload.vue"
 
 import TorCommentNew from "./components/TorCommentNew.vue"
 import TorCommentList from "./components/TorCommentList.vue"
@@ -20,6 +21,7 @@ const Components = {
     TorFieldTextarea,
     TorFieldSelect,
     TorFieldAutocomplete,
+    TorFieldFileUpload,
 
     TorCommentNew,
     TorCommentList,
