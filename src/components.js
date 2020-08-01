@@ -6,7 +6,9 @@ import Vue from "vue"
 import TorFieldText from "./components/TorFieldText.vue"
 import TorFieldTextarea from "./components/TorFieldTextarea.vue"
 import TorFieldFileUpload from "./components/TorFieldFileUpload.vue"
+import TorFieldDatepicker from "./components/TorFieldDatepicker.vue"
 import TorFieldCheckbox from "./components/TorFieldCheckbox.vue"
+import TorFieldRadios from "./components/TorFieldRadios.vue"
 import TorFieldSwitch from "./components/TorFieldSwitch.vue"
 
 import TorCommentNew from "./components/TorCommentNew.vue"
@@ -19,7 +21,9 @@ const Components = {
     TorFieldText,
     TorFieldTextarea,
     TorFieldFileUpload,
+    TorFieldDatepicker,
     TorFieldCheckbox,
+    TorFieldRadios,
     TorFieldSwitch,
 
     TorCommentNew,

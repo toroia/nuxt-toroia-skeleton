@@ -28,11 +28,25 @@
     "_name": "_dddfc9e2"
   },
   {
+    "name": "fields-datepicker",
+    "path": "/fields/datepicker",
+    "component": "/app/example/src/pages/fields/datepicker.vue",
+    "chunkName": "pages/fields/datepicker",
+    "_name": "_29819b88"
+  },
+  {
     "name": "fields-fileupload",
     "path": "/fields/fileupload",
     "component": "/app/example/src/pages/fields/fileupload.vue",
     "chunkName": "pages/fields/fileupload",
     "_name": "_6a014bc9"
+  },
+  {
+    "name": "fields-radios",
+    "path": "/fields/radios",
+    "component": "/app/example/src/pages/fields/radios.vue",
+    "chunkName": "pages/fields/radios",
+    "_name": "_2c2154b8"
   },
   {
     "name": "fields-switch",

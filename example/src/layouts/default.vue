@@ -41,8 +41,16 @@
                             to: '/fields/fileupload'
                         },
                         {
+                            text: 'Datepicker',
+                            to: '/fields/datepicker'
+                        },
+                        {
                             text: 'Checkbox',
                             to: '/fields/checkbox'
+                        },
+                        {
+                            text: 'Radio',
+                            to: '/fields/radios'
                         },
                         {
                             text: 'Switch',
