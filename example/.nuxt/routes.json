@@ -70,6 +70,13 @@
     "_name": "_7c702306"
   },
   {
+    "name": "fields-timepicker",
+    "path": "/fields/timepicker",
+    "component": "/app/example/src/pages/fields/timepicker.vue",
+    "chunkName": "pages/fields/timepicker",
+    "_name": "_f4ca3832"
+  },
+  {
     "name": "sandbox-samsandbox",
     "path": "/sandbox/samsandbox",
     "component": "/app/example/src/pages/sandbox/samsandbox.vue",

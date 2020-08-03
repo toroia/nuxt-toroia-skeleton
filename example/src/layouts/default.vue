@@ -45,6 +45,10 @@
                             to: '/fields/datepicker'
                         },
                         {
+                            text: 'Timepicker',
+                            to: '/fields/timepicker'
+                        },
+                        {
                             text: 'Checkbox',
                             to: '/fields/checkbox'
                         },
