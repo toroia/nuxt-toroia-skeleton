@@ -6,7 +6,7 @@
         extends: VFileInput,
         props: {
             /**
-             * @vue-prop {Boolean} filled - Initial counter's value
+             * @property {Boolean} filled - Initial counter's value
              */
             filled: {
                 type: Boolean,
@@ -14,7 +14,7 @@
             },
 
             /**
-             * @vue-prop {Boolean} chips - Display a chips around the filename
+             * @property {Boolean} chips - Display a chips around the filename
              */
             chips: {
                 type: Boolean,
@@ -22,7 +22,7 @@
             },
 
             /**
-             * @vue-prop {Boolean} smallchips - Set the chips width to small
+             * @property {Boolean} smallchips - Set the chips width to small
              */
             smallChips: {
                 type: Boolean,
@@ -30,7 +30,7 @@
             },
 
             /**
-             * @vue-prop {Boolean} showsize - Define selected files weight
+             * @property {Boolean} showsize - Define selected files weight
              */
             showSize: {
                 type: Boolean,
