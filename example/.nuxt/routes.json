@@ -28,6 +28,13 @@
     "_name": "_dddfc9e2"
   },
   {
+    "name": "fields-colorpicker",
+    "path": "/fields/colorpicker",
+    "component": "/app/example/src/pages/fields/colorpicker.vue",
+    "chunkName": "pages/fields/colorpicker",
+    "_name": "_1d005115"
+  },
+  {
     "name": "fields-datepicker",
     "path": "/fields/datepicker",
     "component": "/app/example/src/pages/fields/datepicker.vue",

@@ -11,6 +11,7 @@ import TorFieldTimepicker from "./components/TorFieldTimepicker.vue"
 import TorFieldCheckbox from "./components/TorFieldCheckbox.vue"
 import TorFieldRadios from "./components/TorFieldRadios.vue"
 import TorFieldSwitch from "./components/TorFieldSwitch.vue"
+import TorFieldColorpicker from "./components/TorFieldColorpicker.vue"
 
 import TorCommentNew from "./components/TorCommentNew.vue"
 import TorCommentList from "./components/TorCommentList.vue"
@@ -27,6 +28,7 @@ const Components = {
     TorFieldCheckbox,
     TorFieldRadios,
     TorFieldSwitch,
+    TorFieldColorpicker,
 
     TorCommentNew,
     TorCommentList,

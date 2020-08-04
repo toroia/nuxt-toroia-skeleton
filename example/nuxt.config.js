@@ -1,6 +1,9 @@
 'use strict'
 
 // noinspection NpmUsedModulesInstalled
+import webpack from 'webpack'
+
+// noinspection NpmUsedModulesInstalled
 import colors from 'vuetify/es5/util/colors'
 
 export default {
@@ -43,7 +46,10 @@ export default {
     },
     build: {
         transpile: ["vue-cli-plugin-vuetify-preset-rally"],
-        extend(config, ctx) {
-        }
+        plugins: [
+            new webpack.ProvidePlugin({
+                _: 'lodash'
+            })
+        ]
     }
 }

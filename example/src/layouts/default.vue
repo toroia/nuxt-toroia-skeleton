@@ -59,6 +59,10 @@
                         {
                             text: 'Switch',
                             to: '/fields/switch'
+                        },
+                        {
+                            text: 'Colorpicker',
+                            to: '/fields/colorpicker'
                         }
                     ]
                 },
