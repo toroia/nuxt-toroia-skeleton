@@ -1,6 +1,6 @@
 <template lang="pug">
     v-app
-        v-navigation-drawer(app clipped)
+        v-navigation-drawer(app clipped permanent)
             template(v-for="entry in menu")
                 v-subheader(v-html="entry.text")
                 v-list-item(
@@ -56,8 +56,13 @@
                     ]
                 },
                 {
-                    text: 'Sandbox',
-                    list: []
+                    text: 'Others',
+                    list: [
+                        {
+                            text: 'WikiApi',
+                            to: '/others/wikiapi'
+                        }
+                    ]
                 }
             ]
         })

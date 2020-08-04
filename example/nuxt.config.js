@@ -28,9 +28,6 @@ export default {
             ws: false
         }
     },
-    serverMiddleware: [
-        '~/middleware/jsdoc'
-    ],
     vuetify: {
         treeShake: true,
         preset: "vue-cli-plugin-vuetify-preset-rally/preset",
@@ -60,7 +57,6 @@ export default {
     hooks: {
         build: {
             done() {
-                exec('yarn docs')
             }
         }
     }

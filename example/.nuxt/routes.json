@@ -35,6 +35,13 @@
     "_name": "_7924b74d"
   },
   {
+    "name": "others-wikiapi",
+    "path": "/others/wikiapi",
+    "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\others\\\\wikiapi.vue",
+    "chunkName": "pages/others/wikiapi",
+    "_name": "_221d23bd"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\index.vue",

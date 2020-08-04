@@ -47,6 +47,9 @@
         "pug": "2.0.3",
         "pug-plain-loader": "^1.0.0"
     },
+    "peerDependencies": {
+        "vuetify": "^2"
+    },
     "files": [
         "src",
         "main.js"
