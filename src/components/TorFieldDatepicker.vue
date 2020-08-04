@@ -1,10 +1,10 @@
 <!--suppress JSUnusedLocalSymbols -->
 <template lang="pug">
     v-menu(
-            v-model="menu"
-            :close-on-content-click='false' :return-value.sync="date"
-            transition="scale-transition" min-width="290px" offset-y
-        )
+        v-model="menu"
+        :close-on-content-click='false' :return-value.sync="date"
+        transition="scale-transition" min-width="290px" offset-y
+    )
         template(v-slot:activator="{ on, attrs }")
             v-text-field.unstyled(
                 type="date" :prepend-icon="prependIcon"
