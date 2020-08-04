@@ -2,18 +2,18 @@
     section
         v-row
             v-col.pb-0(cols="12")
-                h1.title Component - TorFieldTextarea
+                h1.title Component - TorFieldAutocomplete
             v-col.pb-0(cols="12")
                 tor-wiki-api(
-                    component="TorFieldTextarea"
+                    component="TorFieldAutocomplete"
                     :wiki="wiki"
                 )
         v-row
             v-col.pb-0(cols="12")
-                h1.title Simple textarea
+                h1.title Simple autocomplete
             v-col.pb-0(cols="12")
-                tor-field-textarea(
-                    label="Un premier test"
+                tor-field-autocomplete(
+                    label="Recherche à la nimp" :api="{}"
                     v-model="example1"
                 )
         v-row
@@ -21,32 +21,27 @@
                 h1.title Code
             v-col.pb-0(cols="12")
                 tor-codeblock(language="pug")
-                    | tor-field-textarea(
-                    |     label="Un premier test"
+                    | tor-field-autocomplete(
+                    |     label="Effectuer une recherche"
                     | )
 </template>
 
 <script>
     export default {
-        name: 'FieldsTextareaPage',
+        name: 'FieldsSelectPage',
 
         data: () => ({
             example1: null,
             wiki: {
                 extends: {
-                    href: 'https://vuetifyjs.com/en/components/textarea/',
-                    text: 'v-textarea'
+                    href: 'https://vuetifyjs.com/en/components/autocompletes/',
+                    text: 'v-autocomplete'
                 },
                 props: {
                     filled: {
-                        type: Boolean,
+                        type: 'Boolean',
                         default: true,
                         description: "Rempli le background du composant"
-                    },
-                    rows: {
-                        type: Number,
-                        default: 3,
-                        description: "Nombre de lignes dans le textarea par défaut"
                     }
                 }
             }

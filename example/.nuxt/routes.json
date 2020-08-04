@@ -21,6 +21,20 @@
     "_name": "_005a60a9"
   },
   {
+    "name": "fields-autocomplete",
+    "path": "/fields/autocomplete",
+    "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\fields\\\\autocomplete.vue",
+    "chunkName": "pages/fields/autocomplete",
+    "_name": "_54af337b"
+  },
+  {
+    "name": "fields-select",
+    "path": "/fields/select",
+    "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\fields\\\\select.vue",
+    "chunkName": "pages/fields/select",
+    "_name": "_39d9e6cf"
+  },
+  {
     "name": "fields-text",
     "path": "/fields/text",
     "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\fields\\\\text.vue",
@@ -33,6 +47,13 @@
     "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\fields\\\\textarea.vue",
     "chunkName": "pages/fields/textarea",
     "_name": "_7924b74d"
+  },
+  {
+    "name": "others-wikiapi",
+    "path": "/others/wikiapi",
+    "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\others\\\\wikiapi.vue",
+    "chunkName": "pages/others/wikiapi",
+    "_name": "_221d23bd"
   },
   {
     "name": "index",
