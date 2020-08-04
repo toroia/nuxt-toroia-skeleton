@@ -45,10 +45,12 @@
         "nuxt": "^2.13.3",
         "nuxt-webfontloader": "^1.1.0",
         "pug": "2.0.3",
-        "pug-plain-loader": "^1.0.0"
+        "pug-plain-loader": "^1.0.0",
+        "vue-code-highlight": "^0.7.4"
     },
     "peerDependencies": {
-        "vuetify": "^2"
+        "vuetify": "^2",
+        "webpack": "^4"
     },
     "files": [
         "src",

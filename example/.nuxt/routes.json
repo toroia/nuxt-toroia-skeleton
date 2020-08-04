@@ -21,6 +21,20 @@
     "_name": "_005a60a9"
   },
   {
+    "name": "fields-autocomplete",
+    "path": "/fields/autocomplete",
+    "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\fields\\\\autocomplete.vue",
+    "chunkName": "pages/fields/autocomplete",
+    "_name": "_54af337b"
+  },
+  {
+    "name": "fields-select",
+    "path": "/fields/select",
+    "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\fields\\\\select.vue",
+    "chunkName": "pages/fields/select",
+    "_name": "_39d9e6cf"
+  },
+  {
     "name": "fields-text",
     "path": "/fields/text",
     "component": "C:\\\\Repositories\\\\Github\\\\toroia\\\\nuxt-toroia-skeleton\\\\example\\\\src\\\\pages\\\\fields\\\\text.vue",

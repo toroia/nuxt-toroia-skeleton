@@ -35,7 +35,15 @@
                         {
                             text: 'Textarea',
                             to: '/fields/textarea'
-                        }
+                        },
+                        {
+                            text: 'Select',
+                            to: '/fields/select'
+                        },
+                        {
+                            text: 'Autocomplete',
+                            to: '/fields/autocomplete'
+                        },
                     ]
                 },
                 {
@@ -52,7 +60,7 @@
                         {
                             text: 'CommentRow',
                             to: '/comments/commentrow'
-                        }
+                        },
                     ]
                 },
                 {
@@ -61,7 +69,7 @@
                         {
                             text: 'WikiApi',
                             to: '/others/wikiapi'
-                        }
+                        },
                     ]
                 }
             ]

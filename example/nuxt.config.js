@@ -1,11 +1,6 @@
 'use strict'
 
-import {exec} from 'child_process'
-
-// noinspection NpmUsedModulesInstalled
 import webpack from 'webpack'
-
-// noinspection NpmUsedModulesInstalled
 import colors from 'vuetify/es5/util/colors'
 
 export default {
@@ -53,11 +48,5 @@ export default {
                 _: 'lodash'
             })
         ]
-    },
-    hooks: {
-        build: {
-            done() {
-            }
-        }
     }
 }

@@ -37,10 +37,10 @@
                                     strong.red--text.text--darken-2(v-html="name")
                                 div.flex.xs6.md2.text-xs-right
                                     div.text--capitalize.overline.text--secondary.text--darken-3 Type
-                                    span(v-html="prop.type || '-'")
+                                    span(v-html="prop.type && prop.type.name ? prop.type.name : prop.type || '-'")
                                 div.flex.xs12.md7.text-md-right
                                     div.text--capitalize.overline.text--secondary.text--darken-3 Default
-                                    span(v-html="prop.default || 'undefined'")
+                                    span(v-html="'' + prop.default || 'undefined'")
                                 div.flex.xs12.mt-2(v-if="prop.description")
                                     div.text--capitalize.overline.text--secondary.text--darken-3 Description
                                     div(v-html="prop.description")
