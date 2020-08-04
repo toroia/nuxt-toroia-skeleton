@@ -3,6 +3,7 @@
         v-row
             v-col.pb-0(cols="12")
                 h1.title Component - TorFieldText
+                v-subheader.pa-0 Composant input par défaut (type text)
             v-col.pb-0(cols="12")
                 tor-wiki-api(
                     component="TorFieldText"

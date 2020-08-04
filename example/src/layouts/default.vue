@@ -1,6 +1,6 @@
 <template lang="pug">
     v-app
-        v-navigation-drawer(app clipped permanent)
+        v-navigation-drawer(app clipped v-model="active" :permanent="!$vuetify.breakpoint.mobile")
             template(v-for="entry in menu")
                 v-subheader(v-html="entry.text")
                 v-list-item(
@@ -12,7 +12,9 @@
                     v-list-item-content
                         v-list-item-title(v-html="item.text")
         v-app-bar(fixed app flat dense clipped-left color="primary")
-            v-toolbar-title.d-none.d-sm-flex Example
+            v-btn.d-md-none(icon @click="active = !active")
+                v-icon mdi-menu
+            v-toolbar-title.pl-1 Toroia Nuxt Skeleton
         v-main
             v-container.py-0
                 nuxt
@@ -24,6 +26,7 @@
     export default {
         name: 'DefaultLayout',
         data: () => ({
+            active: false,
             menu: [
                 {
                     text: 'Fields',
@@ -43,6 +46,30 @@
                         {
                             text: 'Autocomplete',
                             to: '/fields/autocomplete'
+                        },
+                        {
+                            text: 'Checkbox',
+                            to: '/fields/checkbox'
+                        },
+                        {
+                            text: 'Colorpicker',
+                            to: '/fields/colorpicker'
+                        },
+                        {
+                            text: 'Datepicker',
+                            to: '/fields/datepicker'
+                        },
+                        {
+                            text: 'Fileupload',
+                            to: '/fields/fileupload'
+                        },
+                        {
+                            text: 'Switch',
+                            to: '/fields/switch'
+                        },
+                        {
+                            text: 'Timepicker',
+                            to: '/fields/timepicker'
                         },
                     ]
                 },
@@ -69,6 +96,10 @@
                         {
                             text: 'WikiApi',
                             to: '/others/wikiapi'
+                        },
+                        {
+                            text: 'Codeblock',
+                            to: '/others/codeblock'
                         },
                     ]
                 }
