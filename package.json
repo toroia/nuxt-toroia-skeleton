@@ -55,6 +55,9 @@
     "peerDependencies": {
         "vuetify": "^2"
     },
+    "peerDependencies": {
+        "vuetify": "^2"
+    },
     "files": [
         "src",
         "main.js"

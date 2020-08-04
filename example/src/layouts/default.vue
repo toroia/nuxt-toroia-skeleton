@@ -60,8 +60,24 @@
                             to: '/fields/datepicker'
                         },
                         {
-                            text: 'Fileupload',
+                            text: 'FileUpload',
                             to: '/fields/fileupload'
+                        },
+                        {
+                            text: 'Datepicker',
+                            to: '/fields/datepicker'
+                        },
+                        {
+                            text: 'Timepicker',
+                            to: '/fields/timepicker'
+                        },
+                        {
+                            text: 'Checkbox',
+                            to: '/fields/checkbox'
+                        },
+                        {
+                            text: 'Radio',
+                            to: '/fields/radios'
                         },
                         {
                             text: 'Switch',
@@ -101,7 +117,7 @@
                             text: 'Codeblock',
                             to: '/others/codeblock'
                         },
-                    ]
+                    ],
                 }
             ]
         })
