@@ -48,10 +48,6 @@
                             to: '/fields/autocomplete'
                         },
                         {
-                            text: 'Checkbox',
-                            to: '/fields/checkbox'
-                        },
-                        {
                             text: 'Colorpicker',
                             to: '/fields/colorpicker'
                         },
@@ -62,10 +58,6 @@
                         {
                             text: 'FileUpload',
                             to: '/fields/fileupload'
-                        },
-                        {
-                            text: 'Datepicker',
-                            to: '/fields/datepicker'
                         },
                         {
                             text: 'Timepicker',
@@ -82,11 +74,7 @@
                         {
                             text: 'Switch',
                             to: '/fields/switch'
-                        },
-                        {
-                            text: 'Timepicker',
-                            to: '/fields/timepicker'
-                        },
+                        }
                     ]
                 },
                 {

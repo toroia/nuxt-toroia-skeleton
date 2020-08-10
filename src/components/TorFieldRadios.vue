@@ -1,12 +1,8 @@
 <!--suppress JSUnusedLocalSymbols -->
-<template lang="pug">
-    v-radio(
-        v-bind="$attrs" v-on="$listeners"
-    )
-</template>
-
 <script>
+    import {VRadio} from 'vuetify/lib'
     export default {
         name: "TorFieldRadio",
+        extends: VRadio
     }
 </script>
