@@ -21,7 +21,7 @@
                  small
                     a(:href="wiki.extends.href" target="_blank" v-html="wiki.extends.text")
             v-divider
-        v-tabs.no-transition(vertical)
+        v-tabs.no-transition(vertical :style="{overflow: 'hidden'}")
             template(v-if="wiki.props")
                 v-tab PROPS
                 v-tab-item
@@ -69,8 +69,7 @@
                                 div.flex.xs12.mt-2(v-if="slot.description")
                                     div.text--capitalize.overline.text--secondary.text--darken-3 Props
                                     div.v-markup.v-card.v-sheet.v-sheet--outlined.theme--dark.grey.darken-3
-                                        pre.language-js
-                                            code.language-js(v-html="slot.props")
+                                        tor-codeblock(language="json" v-html="slot.props")
                             v-divider(v-if="index !== Object.keys(slots).length - 1")
             template(v-if="wiki.events")
                 v-tab EVENTS
