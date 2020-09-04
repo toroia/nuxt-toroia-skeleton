@@ -52,12 +52,6 @@
         "vuetify": "^2",
         "webpack": "^4"
     },
-    "peerDependencies": {
-        "vuetify": "^2"
-    },
-    "peerDependencies": {
-        "vuetify": "^2"
-    },
     "files": [
         "src",
         "main.js"
