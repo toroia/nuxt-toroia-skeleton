@@ -18,6 +18,7 @@ import TorFieldColorpicker from "./components/TorFieldColorpicker.vue"
 import TorCommentNew from "./components/TorCommentNew.vue"
 import TorCommentList from "./components/TorCommentList.vue"
 import TorCommentRow from "./components/TorCommentRow.vue"
+import TorArticleRow from "./components/TorArticleRow.vue"
 
 import TorWikiApi from "./components/TorWikiApi.vue"
 import TorCodeblock from "./components/TorCodeblock.vue"
@@ -38,6 +39,7 @@ const Components = {
     TorCommentNew,
     TorCommentList,
     TorCommentRow,
+    TorArticleRow,
 
     TorWikiApi,
     TorCodeblock,

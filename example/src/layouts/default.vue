@@ -16,7 +16,7 @@
                 v-icon mdi-menu
             v-toolbar-title.pl-1 Toroia Nuxt Skeleton
         v-main
-            v-container.py-0
+            v-container(fluid).py-0
                 nuxt
         v-footer.d-none.d-md-flex(fixed inset app)
             span &copy; {{ new Date().getFullYear() }}
@@ -91,6 +91,23 @@
                         {
                             text: 'CommentRow',
                             to: '/comments/commentrow'
+                        },
+                    ]
+                },
+                {
+                    text: 'Article',
+                    list: [
+                        // {
+                        //     text: 'ArticleNew',
+                        //     to: '/articles/articlesnew'
+                        // },
+                        // {
+                        //     text: 'ArticleList',
+                        //     to: '/articles/articleslist'
+                        // },
+                        {
+                            text: 'ArticleRow',
+                            to: '/articles/articlerow'
                         },
                     ]
                 },

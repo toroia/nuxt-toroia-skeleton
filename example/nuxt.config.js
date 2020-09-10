@@ -42,7 +42,7 @@ export default {
         }
     },
     build: {
-        transpile: ["vue-cli-plugin-vuetify-preset-rally"],
+        transpile: ["vue-cli-plugin-vuetify-preset-rally", "@nuxtjs/moment"],
         plugins: [
             new webpack.ProvidePlugin({
                 _: 'lodash'
