@@ -46,11 +46,13 @@
         "nuxt-webfontloader": "^1.1.0",
         "pug": "2.0.3",
         "pug-plain-loader": "^1.0.0",
+        "tiptap-vuetify": "^2.11.1",
         "vue-code-highlight": "^0.7.4"
     },
     "peerDependencies": {
         "vuetify": "^2",
-        "webpack": "^4"
+        "webpack": "^4",
+        "vue": "^2.5"
     },
     "files": [
         "src",

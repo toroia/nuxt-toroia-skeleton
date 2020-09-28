@@ -22,6 +22,7 @@ import TorArticleRow from "./components/TorArticleRow.vue"
 
 import TorWikiApi from "./components/TorWikiApi.vue"
 import TorCodeblock from "./components/TorCodeblock.vue"
+import Editor from "./components/Editor.vue"
 
 const Components = {
     TorFieldText,
@@ -43,6 +44,7 @@ const Components = {
 
     TorWikiApi,
     TorCodeblock,
+    Editor,
 }
 
 export default function () {

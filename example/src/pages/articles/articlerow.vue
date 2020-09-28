@@ -14,6 +14,9 @@
                     :appreciation="item.appreciation"
                     :nbAppreciation="item.nbAppreciation"
                 )
+        v-row
+            v-col(cols="12")
+                Editor
 </template>
 
 <script>

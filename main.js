@@ -62,13 +62,16 @@ export default function (moduleOptions) {
     this.addModule(['@nuxtjs/proxy', {...options.proxy}])
     this.addModule(['@nuxtjs/auth', {...options.auth}])
     this.addModule(['@nuxtjs/vuetify', {
+        icons: {
+            iconFont: 'mdi',
+        },
         lang: {
             locales: {
-                fr
+                fr,
             },
-            current: 'fr'
+            current: 'fr',
         },
-        ...options.vuetify
+        ...options.vuetify,
     }])
     this.addModule(['nuxt-webfontloader', {...options.webfontloader}])
 
@@ -78,11 +81,12 @@ export default function (moduleOptions) {
         options
     })
 
-    // this.addTemplate({
-    //     src: resolve(__dirname, 'src/modules.js'),
-    //     fileName: join('toroia-skeleton', 'src/modules.js'),
-    //     options
-    // })
+    this.addPlugin({
+        src: resolve(__dirname, 'src/plugins.js'),
+        fileName: join('toroia-skeleton', 'src/plugins.js'),
+        mode: 'client',
+        options
+    })
 
     const {readdirSync} = require('fs')
     const foldersToSync = ['src/components']
@@ -102,6 +106,11 @@ export default function (moduleOptions) {
 
     this.options.telemetry = this.options.telemetry || false
 
+    this.options.watchers.webpack = this.options.watchers.webpack || {}
+    this.options.watchers.webpack.poll = this.options.watchers.webpack.poll || 5000
+    this.options.watchers.webpack.aggregateTimeout = this.options.watchers.webpack.aggregateTimeout || 700
+    this.options.watchers.webpack.ignored = this.options.watchers.webpack.ignored || /node_modules/
+
     this.options.components = this.options.components || true
 
     this.options.head.htmlAttrs = this.options.head.htmlAttrs || {}
@@ -120,6 +129,10 @@ export default function (moduleOptions) {
         type: 'image/x-icon',
         href: '/favicon.ico'
     })
+
+    this.options.build.transpile = this.options.build.transpile || []
+    this.options.build.transpile.push('vuetify/lib')
+    this.options.build.transpile.push('tiptap-vuetify')
 }
 
 export const meta = require('./package.json')
