@@ -7,7 +7,7 @@
                     | Composant permettant d'afficher une documentation sous forme de
                     | tableau pour les composants VueJS
             v-col.pb-0(cols="12")
-                tor-wiki-api(
+                tor-other-wikiapi(
                     component="TorWikiApi"
                     :wiki="wiki"
                 )

@@ -5,7 +5,7 @@
                 h1.title Component - TorFieldCheckbox
                 v-subheader.pa-0 Checkbox default component
             v-col.pb-0(cols="12")
-                tor-wiki-api(
+                tor-other-wikiapi(
                     component="TorFieldCheckbox"
                     :wiki="wiki"
                 )
@@ -18,7 +18,7 @@
                     v-model="myCheckSimple" :label="`On / Off - ${myCheckSimple}`"
                 )
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-checkbox(
                     |     v-model="myCheckSimple" :label="`On / Off - ${myCheckSimple}`"
                     | )
@@ -34,7 +34,7 @@
                     :true-value="'Oui'" :false-value="'Non'"
                 )
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-checkbox(
                     |     v-model="myCheckReplaceValues" :label="`On / Off - ${myCheckReplaceValues}`"
                     |     :true-value="'Oui'" :false-value="'Non'"

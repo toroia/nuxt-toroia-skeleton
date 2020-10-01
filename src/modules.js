@@ -1,5 +1,10 @@
 'use strict'
 
+import fr from "vuetify/lib/locale/fr"
+
+/**
+ * Export all skeleton modules in object
+ */
 export default {
     components: '@nuxt/components',
     proxy: '@nuxtjs/proxy',
@@ -10,18 +15,28 @@ export default {
             proxy: true,
             headers: {
                 'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            }
-        }
+                'Content-Type': 'application/json',
+            },
+        },
     },
     moment: {
         name: '@nuxtjs/moment',
         options: {
             defaultLocale: 'fr',
             locales: ['fr'],
-            defaultTimezone: 'Europe/Paris'
-        }
+            defaultTimezone: 'Europe/Paris',
+        },
     },
-    vuetify: '@nuxtjs/vuetify',
-    webfontloader: 'nuxt-webfontloader'
+    vuetify: {
+        name: '@nuxtjs/vuetify',
+        options: {
+            lang: {
+                locales: {
+                    fr,
+                },
+                current: 'fr',
+            },
+        },
+    },
+    webfontloader: 'nuxt-webfontloader',
 }

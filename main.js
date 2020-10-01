@@ -1,9 +1,7 @@
 'use strict'
 
 import {resolve, join} from "path"
-import fr from "vuetify/lib/locale/fr"
-
-// import modules from "./src/modules"
+import modules from "./src/modules"
 
 /**
  * Nuxt Module (Toroia Skeleton)
@@ -20,65 +18,56 @@ export default function (moduleOptions) {
      */
     const options = {
         ...this.options.toroiaSkeleton,
+        ...this.options['toroia-skeleton'],
         ...moduleOptions
     }
 
-    // for (const key in modules) {
-    //     const module = modules[key]
-    //
-    //     if (typeof module === 'object') {
-    //         module.options = typeof module.options === 'object'
-    //             ? module.options
-    //             : {}
-    //
-    //         this.addModule(module.name, {
-    //             ...module.options,
-    //             ...options[key]
-    //         })
-    //     } else {
-    //         this.addModule(module, {
-    //             ...options[key]
-    //         })
-    //     }
-    // }
+    this.addTemplate({
+        src: resolve(__dirname, 'src/modules.js'),
+            fileName: join('toroia-skeleton', 'src/modules.js'),
+            options,
+    })
 
-    this.addModule(['@nuxtjs/axios', {
-        proxy: true,
-        headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        ...options.axios
-    }])
+    for (const key in modules) {
+        const module = modules[key]
 
-    this.addModule(['@nuxtjs/moment', {
-        defaultLocale: 'fr',
-        locales: ['fr'],
-        defaultTimezone: 'Europe/Paris',
-        ...options.moment
-    }])
+        if (typeof module === 'object') {
+            this.addModule(module.name, {
+                ...module.options,
+                ...options[key],
+            })
+        } else {
+            this.addModule(module, {
+                ...options[key],
+            })
+        }
+    }
 
-    this.addModule(['@nuxt/components', {...options.components}])
-    this.addModule(['@nuxtjs/proxy', {...options.proxy}])
-    this.addModule(['@nuxtjs/auth', {...options.auth}])
-    this.addModule(['@nuxtjs/vuetify', {
-        icons: {
-            iconFont: 'mdi',
-        },
-        lang: {
-            locales: {
-                fr,
-            },
-            current: 'fr',
-        },
-        ...options.vuetify,
-    }])
-    this.addModule(['nuxt-webfontloader', {...options.webfontloader}])
+    const {readdirSync} = require('fs')
+    const baseFolders = 'src/components'
+    const foldersToSync = [
+        'Lib',
+        'Field',
+        'Comment',
+        'Article',
+        'Other',
+    ]
+
+    for (const pathString of foldersToSync) {
+        const path = resolve(__dirname, [baseFolders, pathString].join('/'))
+        for (const file of readdirSync(path)) {
+            this.addTemplate({
+                src: resolve(path, file),
+                fileName: join('toroia-skeleton', [baseFolders, pathString].join('/'), file),
+                options
+            })
+        }
+    }
 
     this.addPlugin({
         src: resolve(__dirname, 'src/components.js'),
         fileName: join('toroia-skeleton', 'src/components.js'),
-        options
+        options,
     })
 
     this.addPlugin({
@@ -87,20 +76,6 @@ export default function (moduleOptions) {
         mode: 'client',
         options
     })
-
-    const {readdirSync} = require('fs')
-    const foldersToSync = ['src/components']
-
-    for (const pathString of foldersToSync) {
-        const path = resolve(__dirname, pathString)
-        for (const file of readdirSync(path)) {
-            this.addTemplate({
-                src: resolve(path, file),
-                fileName: join('toroia-skeleton', pathString, file),
-                options
-            })
-        }
-    }
 
     // this.options.srcDir = this.options.srcDir || 'src/'
 

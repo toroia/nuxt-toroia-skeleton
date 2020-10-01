@@ -5,7 +5,7 @@
                 h1.title Component - TorFieldDatepicker
                 v-subheader.pa-0 Datepicker default component
             v-col.pb-0(cols="12")
-                tor-wiki-api(
+                tor-other-wikiapi(
                     component="TorFieldDatepicker"
                     :wiki="wiki"
                 )
@@ -18,7 +18,7 @@
                     v-model="myDateSimple"
                 )
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-datepicker(
                     |     label="Date"
                     | )
@@ -34,7 +34,7 @@
                     active-picker="year"
                 )
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-datepicker(
                     |     label="Date"
                     |     active-picker="year"
@@ -51,7 +51,7 @@
                     prepend-icon="mdi-check"
                 )
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-datepicker(
                     |     label="Date"
                     |     prepend-icon="mdi-check"

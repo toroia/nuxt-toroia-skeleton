@@ -5,7 +5,7 @@
                 h1.title Component - TorFieldTimepicker
                 v-subheader.pa-0 Timepicker default component
             v-col.pb-0(cols="12")
-                tor-wiki-api(
+                tor-other-wikiapi(
                     component="TorFieldTimepicker"
                     :wiki="wiki"
                 )
@@ -18,7 +18,7 @@
                     v-model="myTimeSimple"
                 )
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-timepicker(
                     |     label="Temps passés"
                     | )
@@ -35,7 +35,7 @@
                     prepend-icon="mdi-check"
                 )
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-timepicker(
                     |     label="Temps passés"
                     |     prepend-icon="mdi-check"

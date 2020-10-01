@@ -5,7 +5,7 @@
                 h1.title Component - TorFieldRadio
                 v-subheader.pa-0 Radio default component
             v-col.pb-0(cols="12")
-                tor-wiki-api(
+                tor-other-wikiapi(
                     component="TorFieldRadio"
                     :wiki="wiki"
                 )
@@ -21,7 +21,7 @@
                 span(v-if="radioModel") La valeur sélectionnée est {{radioModel}}
                 span(v-if="!radioModel") Pas de valeur sélectionnée
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | v-radio-group(v-model="radioModel" column)
                     |     tor-field-radios(
                     |         v-for="item in items" :key="item.text"

@@ -42,17 +42,22 @@
         "@nuxtjs/proxy": "^2.0.1",
         "@nuxtjs/sitemap": "^2.4.0",
         "@nuxtjs/vuetify": "^1.11.2",
-        "nuxt": "^2.13.3",
         "nuxt-webfontloader": "^1.1.0",
-        "pug": "2.0.3",
-        "pug-plain-loader": "^1.0.0",
-        "tiptap-vuetify": "^2.11.1",
+        "tiptap": "^1.30.0",
+        "tiptap-extensions": "^1.33.0",
         "vue-code-highlight": "^0.7.4"
     },
+    "devDependencies": {
+        "nuxt": "latest",
+        "@nuxtjs/module-test-utils": "latest",
+        "pug": "2.0.3",
+        "pug-plain-loader": "^1.0.0"
+    },
     "peerDependencies": {
+        "vue": "^2.5",
         "vuetify": "^2",
         "webpack": "^4",
-        "vue": "^2.5"
+        "lodash": "^4"
     },
     "files": [
         "src",

@@ -5,7 +5,7 @@
                 h1.title Component - TorFieldSwitch
                 v-subheader.pa-0 Switch default component
             v-col.pb-0(cols="12")
-                tor-wiki-api(
+                tor-other-wikiapi(
                     component="TorFieldSwitch"
                     :wiki="wiki"
                 )
@@ -18,7 +18,7 @@
                     v-model="mySwitchSimple" :label="`On / Off - ${mySwitchSimple}`"
                 )
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-switch(
                     |     v-model="mySwitchSimple" :label="`On / Off - ${mySwitchSimple}`"
                     | )
@@ -34,7 +34,7 @@
                     :true-value="'Oui'" :false-value="'Non'"
                 )
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-switch(
                     |     v-model="mySwitchReplaceValues" :label="`On / Off - ${mySwitchReplaceValues}`"
                     |     :true-value="'Oui'" :false-value="'Non'"

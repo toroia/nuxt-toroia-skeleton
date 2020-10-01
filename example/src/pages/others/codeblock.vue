@@ -5,7 +5,7 @@
                 h1.title Component - TorCodeblock
                 v-subheader.pa-0 Composant permettant le rendu d'effectuer un rendu visuel sur le code logiciel
             v-col.pb-0(cols="12")
-                tor-wiki-api(
+                tor-other-wikiapi(
                     component="TorCodeblock"
                     :wiki="wiki"
                 )
@@ -15,13 +15,13 @@
             v-col.pb-0(cols="12")
                 textarea.pa-2(:style="exampleArea" readonly)
                     | tor-codeblock(language="pug")
-                    |   | tor-field-text(
-                    |   |     label="Un premier texte"
-                    |   | )
+                    |     | tor-field-text(
+                    |     |     label="Un premier texte"
+                    |     | )
             v-col.pb-0(cols="12")
                 h1.title Render
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-text(
                     |   label="Un premier texte"
                     | )
