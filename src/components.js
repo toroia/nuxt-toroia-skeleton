@@ -3,6 +3,7 @@
 // noinspection NpmUsedModulesInstalled
 import Vue from "vue"
 
+// noinspection JSUnresolvedFunction
 const components = require.context('./components/', true, /[A-Z]\w+\.vue$/)
 
 /**

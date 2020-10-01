@@ -1,9 +1,11 @@
 'use strict'
 
-import Vue from 'vue'
-// import {TiptapVuetifyPlugin} from 'tiptap-vuetify'
-// import 'tiptap-vuetify/dist/main.css'
-
+// noinspection JSUnusedLocalSymbols,JSUnusedGlobalSymbols
+/**
+ * Export custom plugins for VueJS
+ *
+ * @param app
+ */
 export default ({app}) => {
 
 }

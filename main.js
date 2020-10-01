@@ -3,12 +3,12 @@
 import {resolve, join} from "path"
 import modules from "./src/modules"
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Nuxt Module (Toroia Skeleton)
  *
  * @param {object} moduleOptions
  * @this {object}
- * @function {addTemplate, addPlugin}
  */
 export default function (moduleOptions) {
     /**
@@ -22,6 +22,7 @@ export default function (moduleOptions) {
         ...moduleOptions
     }
 
+    // noinspection JSUnresolvedFunction
     this.addTemplate({
         src: resolve(__dirname, 'src/modules.js'),
             fileName: join('toroia-skeleton', 'src/modules.js'),
@@ -56,6 +57,7 @@ export default function (moduleOptions) {
     for (const pathString of foldersToSync) {
         const path = resolve(__dirname, [baseFolders, pathString].join('/'))
         for (const file of readdirSync(path)) {
+            // noinspection JSUnresolvedFunction
             this.addTemplate({
                 src: resolve(path, file),
                 fileName: join('toroia-skeleton', [baseFolders, pathString].join('/'), file),
@@ -64,12 +66,14 @@ export default function (moduleOptions) {
         }
     }
 
+    // noinspection JSUnresolvedFunction
     this.addPlugin({
         src: resolve(__dirname, 'src/components.js'),
         fileName: join('toroia-skeleton', 'src/components.js'),
         options,
     })
 
+    // noinspection JSUnresolvedFunction
     this.addPlugin({
         src: resolve(__dirname, 'src/plugins.js'),
         fileName: join('toroia-skeleton', 'src/plugins.js'),
@@ -110,4 +114,9 @@ export default function (moduleOptions) {
     this.options.build.transpile.push('tiptap-vuetify')
 }
 
+/**
+ *
+ *
+ * @type {object}
+ */
 export const meta = require('./package.json')
