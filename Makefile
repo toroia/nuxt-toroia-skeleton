@@ -12,6 +12,7 @@ dev: ## Starts a development image
 		-v $(CURDIR):/app \
 		--name $(APP_NAME) \
 		-p 3000:3000 \
+		-e CHOKIDAR_USEPOLLING=true \
 		$(APP_IMAGE) sh -c "cd example && yarn dev"
 
 exec: ## Starts a bash environment in an image

@@ -1,6 +1,6 @@
 <template lang="pug">
     v-app
-        v-navigation-drawer(app clipped permanent)
+        v-navigation-drawer(app clipped v-model="active" :permanent="!$vuetify.breakpoint.mobile")
             template(v-for="entry in menu")
                 v-subheader(v-html="entry.text")
                 v-list-item(
@@ -12,9 +12,11 @@
                     v-list-item-content
                         v-list-item-title(v-html="item.text")
         v-app-bar(fixed app flat dense clipped-left color="primary")
-            v-toolbar-title.d-none.d-sm-flex Example
+            v-btn.d-md-none(icon @click="active = !active")
+                v-icon mdi-menu
+            v-toolbar-title.pl-1 Toroia Nuxt Skeleton
         v-main
-            v-container.py-0
+            v-container(fluid).py-0
                 nuxt
         v-footer.d-none.d-md-flex(fixed inset app)
             span &copy; {{ new Date().getFullYear() }}
@@ -24,6 +26,7 @@
     export default {
         name: 'DefaultLayout',
         data: () => ({
+            active: false,
             menu: [
                 {
                     text: 'Fields',
@@ -44,6 +47,34 @@
                             text: 'Autocomplete',
                             to: '/fields/autocomplete'
                         },
+                        {
+                            text: 'Colorpicker',
+                            to: '/fields/colorpicker'
+                        },
+                        {
+                            text: 'Datepicker',
+                            to: '/fields/datepicker'
+                        },
+                        {
+                            text: 'FileUpload',
+                            to: '/fields/fileupload'
+                        },
+                        {
+                            text: 'Timepicker',
+                            to: '/fields/timepicker'
+                        },
+                        {
+                            text: 'Checkbox',
+                            to: '/fields/checkbox'
+                        },
+                        {
+                            text: 'Radio',
+                            to: '/fields/radios'
+                        },
+                        {
+                            text: 'Switch',
+                            to: '/fields/switch'
+                        }
                     ]
                 },
                 {
@@ -64,13 +95,34 @@
                     ]
                 },
                 {
+                    text: 'Article',
+                    list: [
+                        // {
+                        //     text: 'ArticleNew',
+                        //     to: '/articles/articlesnew'
+                        // },
+                        // {
+                        //     text: 'ArticleList',
+                        //     to: '/articles/articleslist'
+                        // },
+                        {
+                            text: 'ArticleRow',
+                            to: '/articles/articlerow'
+                        },
+                    ]
+                },
+                {
                     text: 'Others',
                     list: [
                         {
                             text: 'WikiApi',
                             to: '/others/wikiapi'
                         },
-                    ]
+                        {
+                            text: 'Codeblock',
+                            to: '/others/codeblock'
+                        },
+                    ],
                 }
             ]
         })

@@ -1,20 +1,16 @@
 <template lang="pug">
-    v-row
-        v-col(cols="12")
-            tor-wiki-api(
-                component="TorWikiApi"
-                :wiki="wiki"
-            )
-    //v-row
-        v-col(cols="12")
-            h1.title
-                span Textarea&nbsp;
-                small
-                    a(href="https://vuetifyjs.com/en/components/textarea/#textareas" target="_blank") (source)
-        v-col(cols="12")
-            tor-field-textarea(
-                label="Un premier test"
-            )
+    section
+        v-row
+            v-col.pb-0(cols="12")
+                h1.title Component - TorWikiApi
+                v-subheader.pa-0
+                    | Composant permettant d'afficher une documentation sous forme de
+                    | tableau pour les composants VueJS
+            v-col.pb-0(cols="12")
+                tor-other-wikiapi(
+                    component="TorWikiApi"
+                    :wiki="wiki"
+                )
 </template>
 
 <script>
@@ -41,7 +37,8 @@
                                 filled: {
                                     type: 'Boolean',
                                     default: true,
-                                    description: "Rempli le background du composant"
+                                    description: "Rempli le background du composant",
+                                    example: {},
                                 }
                             },
                             events: {

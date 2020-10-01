@@ -1,15 +1,14 @@
 'use strict'
 
 import {resolve, join} from "path"
+import modules from "./src/modules"
 
-// import modules from "./src/modules"
-
+// noinspection JSUnusedGlobalSymbols
 /**
  * Nuxt Module (Toroia Skeleton)
  *
  * @param {object} moduleOptions
  * @this {object}
- * @function {addTemplate, addPlugin}
  */
 export default function (moduleOptions) {
     /**
@@ -19,79 +18,77 @@ export default function (moduleOptions) {
      */
     const options = {
         ...this.options.toroiaSkeleton,
+        ...this.options['toroia-skeleton'],
         ...moduleOptions
     }
 
-    // for (const key in modules) {
-    //     const module = modules[key]
-    //
-    //     if (typeof module === 'object') {
-    //         module.options = typeof module.options === 'object'
-    //             ? module.options
-    //             : {}
-    //
-    //         this.addModule(module.name, {
-    //             ...module.options,
-    //             ...options[key]
-    //         })
-    //     } else {
-    //         this.addModule(module, {
-    //             ...options[key]
-    //         })
-    //     }
-    // }
-
-    this.addModule(['@nuxtjs/axios', {
-        proxy: true,
-        headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        ...options.axios
-    }])
-
-    this.addModule(['@nuxtjs/moment', {
-        defaultLocale: 'fr',
-        locales: ['fr'],
-        defaultTimezone: 'Europe/Paris',
-        ...options.moment
-    }])
-
-    this.addModule(['@nuxt/components', {...options.components}])
-    this.addModule(['@nuxtjs/proxy', {...options.proxy}])
-    this.addModule(['@nuxtjs/auth', {...options.auth}])
-    this.addModule(['@nuxtjs/vuetify', {...options.vuetify}])
-    this.addModule(['nuxt-webfontloader', {...options.webfontloader}])
-
-    this.addPlugin({
-        src: resolve(__dirname, 'src/components.js'),
-        fileName: join('toroia-skeleton', 'src/components.js'),
-        options
+    // noinspection JSUnresolvedFunction
+    this.addTemplate({
+        src: resolve(__dirname, 'src/modules.js'),
+            fileName: join('toroia-skeleton', 'src/modules.js'),
+            options,
     })
 
-    // this.addTemplate({
-    //     src: resolve(__dirname, 'src/modules.js'),
-    //     fileName: join('toroia-skeleton', 'src/modules.js'),
-    //     options
-    // })
+    for (const key in modules) {
+        const module = modules[key]
+
+        if (typeof module === 'object') {
+            this.addModule(module.name, {
+                ...module.options,
+                ...options[key],
+            })
+        } else {
+            this.addModule(module, {
+                ...options[key],
+            })
+        }
+    }
 
     const {readdirSync} = require('fs')
-    const foldersToSync = ['src/components']
+    const baseFolders = 'src/components'
+    const foldersToSync = [
+        'Lib',
+        'Field',
+        'Comment',
+        'Article',
+        'Other',
+    ]
 
     for (const pathString of foldersToSync) {
-        const path = resolve(__dirname, pathString)
+        const path = resolve(__dirname, [baseFolders, pathString].join('/'))
         for (const file of readdirSync(path)) {
+            // noinspection JSUnresolvedFunction
             this.addTemplate({
                 src: resolve(path, file),
-                fileName: join('toroia-skeleton', pathString, file),
+                fileName: join('toroia-skeleton', [baseFolders, pathString].join('/'), file),
                 options
             })
         }
     }
 
+    // noinspection JSUnresolvedFunction
+    this.addPlugin({
+        src: resolve(__dirname, 'src/components.js'),
+        fileName: join('toroia-skeleton', 'src/components.js'),
+        options,
+    })
+
+    // noinspection JSUnresolvedFunction
+    this.addPlugin({
+        src: resolve(__dirname, 'src/plugins.js'),
+        fileName: join('toroia-skeleton', 'src/plugins.js'),
+        mode: 'client',
+        options
+    })
+
     // this.options.srcDir = this.options.srcDir || 'src/'
 
     this.options.telemetry = this.options.telemetry || false
+
+    this.options.watchers.webpack = this.options.watchers.webpack || {}
+    this.options.watchers.webpack.poll = this.options.watchers.webpack.poll || 5000
+    this.options.watchers.webpack.aggregateTimeout = this.options.watchers.webpack.aggregateTimeout || 700
+    this.options.watchers.webpack.ignored = this.options.watchers.webpack.ignored || /node_modules/
 
     this.options.components = this.options.components || true
 
@@ -111,6 +108,15 @@ export default function (moduleOptions) {
         type: 'image/x-icon',
         href: '/favicon.ico'
     })
+
+    this.options.build.transpile = this.options.build.transpile || []
+    this.options.build.transpile.push('vuetify/lib')
+    this.options.build.transpile.push('tiptap-vuetify')
 }
 
+/**
+ *
+ *
+ * @type {object}
+ */
 export const meta = require('./package.json')

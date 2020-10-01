@@ -3,8 +3,9 @@
         v-row
             v-col.pb-0(cols="12")
                 h1.title Component - TorFieldText
+                v-subheader.pa-0 Composant input par défaut (type text)
             v-col.pb-0(cols="12")
-                tor-wiki-api(
+                tor-other-wikiapi(
                     component="TorFieldText"
                     :wiki="wiki"
                 )
@@ -20,7 +21,7 @@
             v-col.pb-0(cols="12")
                 h1.title Code
             v-col.pb-0(cols="12")
-                tor-codeblock(language="pug")
+                tor-other-codeblock(language="pug")
                     | tor-field-text(
                     |     label="Un premier texte"
                     | )
