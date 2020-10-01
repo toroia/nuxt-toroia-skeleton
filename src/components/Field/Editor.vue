@@ -4,31 +4,30 @@
             editor-menu-bar(:editor="editor" v-slot="{ commands, isActive }")
                 v-card-actions
                     template(v-for="action in actions")
+                        template(v-if="action.type === 'button'")
+                            v-tooltip(v-if="action.tooltip" top)
+                                template(#activator="{ on }")
+                                    v-btn(
+                                        :color="colorize(isActive, action)"
+                                        @click="commanding(commands, action)"
+                                        v-on="on" small icon
+                                    )
+                                        v-icon(small v-text="action.icon")
+                                span(v-text="action.tooltip")
+                            v-btn(
+                                :color="colorize(isActive, action)"
+                                @click="commanding(commands, action)"
+                                v-on="on" small icon v-else
+                            )
+                                v-icon(small v-text="action.icon")
+                        v-divider.mx-1(v-else-if="action.type === 'separator'" vertical)
                         slot(
                             :name="'action.' + action.name"
+                            :isActive="isActive"
+                            :commands="commands"
+                            :action="action"
+                            v-else
                         )
-                            v-tooltip(v-if="button.tooltip" top)
-                    //template(v-for="(action, i) in actions")
-                        template(v-for="button in action.buttons")
-                            slot(
-                               // :name="'action.' + button.command"
-                              //  :isActive="isActive"
-                            //    :colorize="colorize"
-                            //    :commander="commander"
-                           //     :commands="commands"
-                           //     :button="button"
-                            )
-                                v-tooltip(v-if="button.tooltip" top)
-                                    template(#activator="{ on }")
-                                        v-btn(
-                                    //        :color="colorize(isActive, button)"
-                                            v-on="on" small icon @click="commander(commands, button)"
-                                        )
-                                            v-icon(small v-text="button.icon")
-                                    span(v-text="button.tooltip")
-                                v-btn(v-else @click="commander(commands, button)" small icon)
-                                    v-icon(small v-text="button.icon")
-                        v-divider.mx-1(v-if="i < (actions.length -1) && actions.buttons" vertical)
             v-divider
             editor-content.tiptap-vuetify-editor__content(:editor="editor")
 </template>
@@ -37,8 +36,27 @@
     // @see https://tiptap.dev/docs/api/extensions.html
     import {Editor, EditorContent, EditorMenuBar} from 'tiptap'
 
+    // noinspection JSUnusedGlobalSymbols
     export default {
         props: {
+            value: {
+                type: Object,
+                default: () => ({}),
+            },
+            extensions: {
+                type: Array,
+                default: () => ([
+                    'History',
+                    'Bold',
+                    'Italic',
+                    'Underline',
+                    {
+                        'Heading': {
+                            levels: [1, 2],
+                        },
+                    },
+                ]),
+            },
             actions: {
                 type: Array,
                 default: () => ([
@@ -47,86 +65,73 @@
                         type: 'button',
                         tooltip: 'Annuler (Ctrl + Z)',
                         icon: 'mdi-undo',
+                        // active: isActive => isActive.undo(),
                         command: commands => commands.undo(),
                     },
                     {
+                        name: 'redo',
                         type: 'button',
                         tooltip: 'Rétablir (Ctrl + Y)',
                         icon: 'mdi-redo',
+                        // active: isActive => isActive.redo(),
                         command: commands => commands.redo(),
                     },
-                ])
-            }
-
-            /*actions: {
-                type: Array,
-                default: () => ([
                     {
-                        extensions: [
-                            'Mention',
-                        ],
+                        type: 'separator',
                     },
                     {
-                        extensions: [
-                            'History',
-                        ],
-                        buttons: [
-                            {
-                                tooltip: "Annuler (Ctrl + Z)",
-                                icon: 'mdi-undo',
-                                command: 'undo',
-                            },
-                            {
-                                tooltip: "Rétablir (Ctrl + Y)",
-                                icon: 'mdi-redo',
-                                command: 'redo',
-                            },
-                        ],
+                        name: 'bold',
+                        type: 'button',
+                        tooltip: "Gras (Ctrl + B)",
+                        icon: 'mdi-format-bold',
+                        active: isActive => isActive.bold(),
+                        command: commands => commands.bold(),
                     },
                     {
-                        extensions: [
-                            'Bold',
-                            'Italic',
-                            'Underline',
-                        ],
-                        buttons: [
-                            {
-                                tooltip: "Gras (Ctrl + B)",
-                                icon: 'mdi-format-bold',
-                                command: 'bold',
-                            },
-                            {
-                                tooltip: "Italique (Ctrl + B)",
-                                icon: 'mdi-format-italic',
-                                command: 'italic',
-                            },
-                            {
-                                tooltip: "Souligné (Ctrl + U)",
-                                icon: 'mdi-format-underline',
-                                command: 'underline',
-                            },
-                        ],
+                        name: 'italic',
+                        type: 'button',
+                        tooltip: "Italique (Ctrl + B)",
+                        icon: 'mdi-format-italic',
+                        active: isActive => isActive.italic(),
+                        command: commands => commands.italic(),
                     },
                     {
-                        extensions: [
-                            'Image',
-                            'Link',
-                        ],
-                        buttons: [
-                            {
-                                tooltip: 'Importer une image',
-                                icon: 'mdi-image',
-                                command: 'image',
-                            },
-                            {
-                                tooltip: 'Insérer un lien',
-                                icon: 'mdi-link',
-                                command: 'link',
-                            },
-                        ]
-                    }
+                        name: 'underline',
+                        type: 'button',
+                        tooltip: "Souligné (Ctrl + U)",
+                        icon: 'mdi-format-underline',
+                        active: isActive => isActive.underline(),
+                        command: commands => commands.underline(),
+                    },
+                    {
+                        type: 'separator',
+                    },
+                    {
+                        name: 'header-1',
+                        type: 'button',
+                        tooltip: 'Titre 1',
+                        icon: 'mdi-format-header-1',
+                        active: isActive => isActive.heading({ level: 1 }),
+                        command: commands => commands.heading({ level: 1 }),
+                    },
+                    {
+                        name: 'header-2',
+                        type: 'button',
+                        tooltip: 'Titre 2',
+                        icon: 'mdi-format-header-2',
+                        active: isActive => isActive.heading({ level: 2 }),
+                        command: commands => commands.heading({ level: 2 }),
+                    },
+                    {
+                        name: 'header-3',
+                        type: 'button',
+                        tooltip: 'Titre 3',
+                        icon: 'mdi-format-header-3',
+                        active: isActive => isActive.heading({ level: 3 }),
+                        command: commands => commands.heading({ level: 3 }),
+                    },
                 ]),
-            },*/
+            },
         },
 
         components: {
@@ -140,39 +145,54 @@
             }
         },
 
+        watch: {
+            value: {
+                handler(value) {
+                    this.editor.setContent(value || {})
+                },
+                deep: true,
+            }
+        },
+
         methods: {
-            colorize(isActive, button) {
-                if (_.isFunction(isActive[button.command]) && isActive[button.command]()) {
+            colorize(isActive, action) {
+                if (_.isFunction(action.active) && action.active(isActive)) {
                     return 'primary'
                 }
                 return null
             },
 
-            commander(commands, button, args = {}) {
-                debugger
-                if (_.isFunction(commands[button.command])) {
-                    commands[button.command](args)
+            commanding(commands, action) {
+                if (_.isFunction(action.command)) {
+                    action.command(commands)
                 }
-            },
+            }
         },
 
         mounted() {
             let extensions = []
 
-            _.forEach(this.actions, action => {
-                if (_.isArray(action.extensions)) {
-                    _.forEach(action.extensions, extName => {
-                        let extension = _.upperFirst(extName)
-                        let instance = require('tiptap-extensions')[extension]
-                        // TODO Pouvoir passer des args à l'instance
-                        extensions.push(new instance())
-                    })
+            _.forEach(this.extensions, extension => {
+                if (_.isString(extension)) {
+                    let extName = _.upperFirst(extension)
+                    let instance = require('tiptap-extensions')[extName]
+                    extensions.push(new instance())
+                } else if (_.isObject(extension)) {
+                    let key = Object.keys(extension)[0]
+                    let args = Object.values(extension)
+                    let extName = _.upperFirst(key)
+                    let instance = require('tiptap-extensions')[extName]
+                    extensions.push(new instance(args))
                 }
             })
 
             this.editor = new Editor({
                 extensions,
+                onUpdate: ({getJSON}) => {
+                    this.$emit('input', getJSON())
+                }
             })
+            this.editor.setContent(this.value || {})
         }
     }
 </script>
@@ -180,10 +200,6 @@
 <style>
     .tiptap-vuetify-editor__action-render-btn {
         margin: 2px 6px
-    }
-
-    .tiptap-vuetify-editor__btn-icon.v-icon.fas {
-        font-size: 16px
     }
 
     .tiptap-vuetify-editor__toolbar .v-toolbar {
@@ -326,6 +342,10 @@
 
     .tiptap-vuetify-editor__content a {
         pointer-events: none
+    }
+
+    .tiptap-vuetify-editor__content h1 {
+        font-size: 28px;
     }
 
     .tiptap-vuetify-editor__content h1, .tiptap-vuetify-editor__content h2, .tiptap-vuetify-editor__content h3, .tiptap-vuetify-editor__content h4 {
