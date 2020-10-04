@@ -7,44 +7,19 @@
         v-row
             v-col(cols="12" v-for="item in items" :key="item.id")
                 tor-article-row(v-bind="item")
-        v-row
-            v-col(cols="12")
-                tor-field-editor(v-model="editor")
 </template>
 
 <script>
     export default {
         name: 'MyArticleRow',
         data: () => ({
-            editor: {
-                "type": "doc",
-                "content": [
-                    {
-                        "type": "heading",
-                        "attrs": {"level": 2},
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": "zzzz"
-                            }
-                        ]
-                    }
-                ],
-            },
-            actions: [
-                {
-                    buttons: [
-                        {
-                            icon: 'mdi-home',
-                            command: 'toto'
-                        }
-                    ]
-                }
-            ],
             items: [
                 {
                     id: 1,
                     displayname: "Jon DOE",
+                    iconTip: "mdi-minus",
+                    categoryTip: "Programmation",
+                    titleTip: "Texte de test",
                     image: 'https://randomuser.me/api/portraits/men/77.jpg',
                     content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ' +
                         'ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ' +
@@ -59,6 +34,9 @@
                 {
                     id: 2,
                     displayname: "Emilio KLARK",
+                    iconTip: "mdi-plus",
+                    categoryTip: "PHP",
+                    titleTip: "Pourquoi Cake PHP est un framework mauvais",
                     image: 'https://randomuser.me/api/portraits/men/78.jpg',
                     content: 'A mort Cake PHP',
                     time: 'Il y a 2h',
@@ -69,6 +47,9 @@
                 {
                     id: 3,
                     displayname: "Paul JAK",
+                    iconTip: "mdi-share",
+                    categoryTip: "Versionning",
+                    titleTip: "SVN est un outil déprécié",
                     image: 'https://randomuser.me/api/portraits/men/79.jpg',
                     content: 'La tips de trop',
                     time: 'Il y a 1j',

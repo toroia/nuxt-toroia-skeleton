@@ -54,5 +54,10 @@ export default {
                 _: 'lodash'
             })
         ]
+    },
+    watchers: {
+        webpack: {
+            poll: true
+        }
     }
 }

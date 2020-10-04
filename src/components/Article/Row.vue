@@ -1,13 +1,21 @@
 <template lang="pug">
 v-card(v-bind="bindCardProps")
-    v-toolbar(color="transparent" :height="toolbarSize + 10" flat)
-        slot(name="toolbar" :toolbarSize="toolbarSize")
+    v-toolbar(color="transparent" :height="toolbarHeadSize" flat)
+        slot(name="toolbar" :toolbarHeadSize="toolbarHeadSize")
             slot(name="toolbar.left")
-            v-avatar(:size="toolbarSize")
-                img(:src="image")
-            v-toolbar-title.overline.ml-3(v-text="displayname")
+            template
+                v-tooltip(top)
+                    span(v-text="categoryTip")
+                    template(v-slot:activator="{ on, attrs }")
+                        v-icon(v-text="iconTip" small v-bind="attrs" v-on="on")
+
+            v-divider.ml-4.mr-1(vertical)
+
+            v-toolbar-title.overline.ml-3(v-text="titleTip")
+
             v-spacer
-            span.caption(v-text="time")
+
+
             v-divider.ml-4.mr-1(vertical)
             v-menu
                 v-list(dense)
@@ -29,18 +37,32 @@ v-card(v-bind="bindCardProps")
 
     v-divider
 
+    v-toolbar(color="transparent" :height="toolbarAvatarSize" flat)
+        slot(name="toolbarAvatar" :toolbarAvatarSize="toolbarAvatarSize")
+            slot(name="toolbarAvatar.left")
+            v-avatar(:size="30")
+                img(:src="image")
+            span.subtitle-2.ml-3(v-text="displayname")
+            slot(name="toolbarAvatar.right")
+
     v-card-text
         slot(name="content")
         span.body-2(v-text="content")
 
+    v-toolbar(color="transparent" :height="toolbarTimeSize" flat)
+        slot(name="toolbarTimer" :toolbarTimeSize="toolbarTimeSize")
+            slot(name="toolbarTimer.left")
+            v-spacer
+            span.caption(v-text="time")
+            slot(name="toolbarTimer.right")
+
     v-divider
 
     v-card-actions
-        slot(name="actions")
+        slot(name="actions" :toolbarFootSize="toolbarFootSize")
             slot(name="actions.left")
-            v-btn(icon small)
-                v-icon(small) mdi-minus
-            v-col(cols="1")
+
+            template(class="appreciationWidth")
                 v-tooltip(top)
                     span {{nbAppreciation}} appréciations
                     template(v-slot:activator="{ on, attrs }")
@@ -52,26 +74,21 @@ v-card(v-bind="bindCardProps")
                             v-on="on"
                             :value="appreciation"
                         )
-            v-btn(icon small)
-                v-icon(small) mdi-plus
-            v-divider.mx-4(vertical)
 
             v-spacer
+
             v-btn(icon small)
                 v-icon(small) mdi-emoticon
             v-btn(icon small)
                 v-icon(small) mdi-comment
             v-btn(icon small)
                 v-icon(small) mdi-share
-            v-divider.mx-4(vertical)
-            v-btn(color="default" text x-small) Afficher les commentaires
             slot(name="actions.right")
 </template>
 
 <script>
     export default {
         name: 'TorArticleRow',
-
         props: {
 
             /**
@@ -123,6 +140,30 @@ v-card(v-bind="bindCardProps")
             },
 
             /**
+             * @property {String} categorieTip - Name of the tip's category
+             */
+            categoryTip: {
+                type: String,
+                default: 'Test',
+            },
+
+            /**
+             * @property {String} iconTip - Icon of the tip's categorie
+             */
+            iconTip: {
+                type: String,
+                default: 'mdi-minus',
+            },
+
+            /**
+             * @property {String} titleTip - Tip's title
+             */
+            titleTip: {
+                type: String,
+                default: 'Title',
+            },
+
+            /**
              * @property {String} cardProps - Props of the card element
              */
             cardProps: {
@@ -134,7 +175,10 @@ v-card(v-bind="bindCardProps")
         },
 
         data: () => ({
-            toolbarSize: 40
+            toolbarHeadSize: 50,
+            toolbarTimeSize: 30,
+            toolbarAvatarSize: 50,
+            toolbarFootSize: 40,
         }),
 
         computed: {
@@ -151,4 +195,12 @@ v-card(v-bind="bindCardProps")
     }
 </script>
 
+<style>
+    .appreciationWidth {
+        width: 40px;
+    }
+</style>
+
+
 <!--Emojis : https://emoji.gg/api/-->
+
