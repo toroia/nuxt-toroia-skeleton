@@ -5,13 +5,13 @@ v-card(v-bind="bindCardProps")
             slot(name="toolbar.left")
             template
                 v-tooltip(top)
-                    span(v-text="categoryTip")
+                    span(v-text="category.name")
                     template(v-slot:activator="{ on, attrs }")
-                        v-icon(v-text="iconTip" small v-bind="attrs" v-on="on")
+                        v-icon(v-text="category.src" small v-bind="attrs" v-on="on")
 
             v-divider.ml-4.mr-1(vertical)
 
-            v-toolbar-title.overline.ml-3(v-text="titleTip")
+            v-toolbar-title.overline.ml-3(v-text="title")
 
             v-spacer
 
@@ -21,6 +21,15 @@ v-card(v-bind="bindCardProps")
                 v-list(dense)
                     slot(name="toolbarRightButtonList")
                         slot(name="toolbarRightButtonList.left")
+                        v-list-item(@click="")
+                            v-list-item-icon
+                                v-icon(small) mdi-account-plus
+                            v-list-item-title Suivre {{entity.cn}}
+                        v-list-item(@click="")
+                            v-list-item-icon
+                                v-icon(small) mdi-block-helper
+                            v-list-item-title Bloquer {{entity.cn}}
+                        v-divider
                         v-list-item(@click="")
                             v-list-item-icon
                                 v-icon(small) mdi-content-copy
@@ -40,9 +49,17 @@ v-card(v-bind="bindCardProps")
     v-toolbar(color="transparent" :height="toolbarAvatarSize" flat)
         slot(name="toolbarAvatar" :toolbarAvatarSize="toolbarAvatarSize")
             slot(name="toolbarAvatar.left")
-            v-avatar(:size="30")
-                img(:src="image")
-            span.subtitle-2.ml-3(v-text="displayname")
+            v-badge(
+                color="green accent-4"
+                top
+                dot
+                offset-x="8"
+                offset-y="8"
+            )
+                v-avatar(:size="30")
+                    img(:src="entity.src")
+            span.subtitle-2.ml-1(v-text="entity.cn")
+            v-badge(color="primary darken-2" :icon="setIconTypeEntity" inline)
             slot(name="toolbarAvatar.right")
 
     v-card-text
@@ -53,7 +70,7 @@ v-card(v-bind="bindCardProps")
         slot(name="toolbarTimer" :toolbarTimeSize="toolbarTimeSize")
             slot(name="toolbarTimer.left")
             v-spacer
-            span.caption(v-text="time")
+            span.caption(v-text="metadata.createdAt")
             slot(name="toolbarTimer.right")
 
     v-divider
@@ -61,10 +78,11 @@ v-card(v-bind="bindCardProps")
     v-card-actions
         slot(name="actions" :toolbarFootSize="toolbarFootSize")
             slot(name="actions.left")
-
-            template(class="appreciationWidth")
+            v-btn(icon small)
+                v-icon(small) mdi-thumb-down
+            template
                 v-tooltip(top)
-                    span {{nbAppreciation}} appréciations
+                    span Tip appréciée à {{appreciation}}% des utilisateurs
                     template(v-slot:activator="{ on, attrs }")
                         v-progress-linear(
                             background-color="error"
@@ -73,8 +91,10 @@ v-card(v-bind="bindCardProps")
                             v-bind="attrs"
                             v-on="on"
                             :value="appreciation"
+                            class="appreciationWidth"
                         )
-
+            v-btn(icon small)
+                v-icon(small) mdi-thumb-up
             v-spacer
 
             v-btn(icon small)
@@ -92,11 +112,24 @@ v-card(v-bind="bindCardProps")
         props: {
 
             /**
-             * @property {String} image - Set avatar of the author
+             * @property {String} title - Tip's title
              */
-            image: {
+            title: {
                 type: String,
-                default: 'https://randomuser.me/api/portraits/men/77.jpg',
+                default: null,
+            },
+
+            /**
+             * @property {Object} entity - Entity
+             */
+            entity: {
+                type: Object,
+                default: () => ({
+                    id: null,
+                    cn: null,
+                    type: null,
+                    src: 'https://randomuser.me/api/portraits/men/77.jpg',
+                }),
             },
 
             /**
@@ -104,63 +137,66 @@ v-card(v-bind="bindCardProps")
              */
             content: {
                 type: String,
-                default: 'Contenu',
+                default: null,
             },
 
             /**
-             * @property {String} displayname - Displayname of the author
+             * @property {String} slug - Slug
              */
-            displayname: {
-                type: String,
-                default: 'Jon DOE',
-            },
-
-            /**
-             * @property {String} time - Time left after the article posted
-             */
-            time: {
+            slug: {
                 type: String,
                 default: null,
             },
 
             /**
-             * @property {Number} appreciation - Percentage of tip's appreciation
+             * @property {Object} category - Category
+             */
+            category: {
+                type: Object,
+                default: () => ({
+                    id: null,
+                    name: null,
+                    src: null
+                }),
+            },
+
+            /**
+             * @property {Number} appreciation - Percentage of appreciation
              */
             appreciation: {
                 type: Number,
-                default: 0,
+                default: null,
             },
 
             /**
-             * @property {Number} nbAppreciation - Number of appreciations
+             * @property {Object} reactions - Reactions
              */
-            nbAppreciation: {
-                type: Number,
-                default: 0,
+            reactions: {
+                type: Object,
+                default: () => ({
+                    icon: null,
+                    entities: [],
+                    total: null
+                }),
             },
 
             /**
-             * @property {String} categorieTip - Name of the tip's category
+             * @property {Boolean} flag - Flag determines if a tip was viewed by the user
              */
-            categoryTip: {
-                type: String,
-                default: 'Test',
+            flag: {
+                type: Boolean,
+                default: null,
             },
 
             /**
-             * @property {String} iconTip - Icon of the tip's categorie
+             * @property {Object} metadata - Metadatas
              */
-            iconTip: {
-                type: String,
-                default: 'mdi-minus',
-            },
-
-            /**
-             * @property {String} titleTip - Tip's title
-             */
-            titleTip: {
-                type: String,
-                default: 'Title',
+            metadata: {
+                type: Object,
+                default: () => ({
+                    createdAt: null,
+                    createdBy: null,
+                }),
             },
 
             /**
@@ -176,8 +212,8 @@ v-card(v-bind="bindCardProps")
 
         data: () => ({
             toolbarHeadSize: 50,
-            toolbarTimeSize: 30,
             toolbarAvatarSize: 50,
+            toolbarTimeSize: 30,
             toolbarFootSize: 40,
         }),
 
@@ -190,6 +226,14 @@ v-card(v-bind="bindCardProps")
                     },
                     ...this.cardProps
                 }
+            },
+            setIconTypeEntity() {
+                switch (this.entity.type) {
+                    case 1:
+                        return "mdi-account"
+                    case 2:
+                        return "mdi-city"
+                }
             }
         }
     }
@@ -197,7 +241,7 @@ v-card(v-bind="bindCardProps")
 
 <style>
     .appreciationWidth {
-        width: 40px;
+        max-width: 80px;
     }
 </style>
 
