@@ -1,40 +1,46 @@
 <template lang="pug">
     client-only
-        v-card.tiptap-vuetify-editor
-            editor-menu-bar(:editor="editor" v-slot="{ commands, isActive }")
-                v-card-actions
-                    template(v-for="action in actions")
-                        template(v-if="action.type === 'button'")
-                            v-tooltip(v-if="action.tooltip" top)
-                                template(#activator="{ on }")
-                                    v-btn(
-                                        :color="colorize(isActive, action)"
-                                        @click="commanding(commands, action)"
-                                        v-on="on" small icon
-                                    )
-                                        v-icon(small v-text="action.icon")
-                                span(v-text="action.tooltip")
-                            v-btn(
-                                :color="colorize(isActive, action)"
-                                @click="commanding(commands, action)"
-                                v-on="on" small icon v-else
+        section.editor
+            v-card.tiptap-vuetify-editor
+                editor-menu-bar(:editor="editor" v-slot="{ commands, isActive }")
+                    v-card-actions
+                        template(v-for="action in actions")
+                            template(v-if="action.type === 'button'")
+                                v-tooltip(v-if="action.tooltip" top)
+                                    template(#activator="{ on }")
+                                        v-btn(
+                                            :color="colorize(isActive, action)"
+                                            @click="commanding(commands, action)"
+                                            v-on="on" small icon
+                                        )
+                                            v-icon(small v-text="action.icon")
+                                    span(v-text="action.tooltip")
+                                v-btn(
+                                    :color="colorize(isActive, action)"
+                                    @click="commanding(commands, action)"
+                                    v-on="on" small icon v-else
+                                )
+                                    v-icon(small v-text="action.icon")
+                            v-divider.mx-1(v-else-if="action.type === 'separator'" vertical)
+                            slot(
+                                :name="'action.' + action.name"
+                                :isActive="isActive"
+                                :commands="commands"
+                                :action="action"
+                                v-else
                             )
-                                v-icon(small v-text="action.icon")
-                        v-divider.mx-1(v-else-if="action.type === 'separator'" vertical)
-                        slot(
-                            :name="'action.' + action.name"
-                            :isActive="isActive"
-                            :commands="commands"
-                            :action="action"
-                            v-else
-                        )
-            v-divider
-            editor-content.tiptap-vuetify-editor__content(:editor="editor")
+                v-divider
+                editor-content.tiptap-vuetify-editor__content(:editor="editor")
+            div.suggestions-list(ref="suggestions")
+                v-list
+                    v-list-item
+                        v-list-item-title toto
 </template>
 
 <script>
     // @see https://tiptap.dev/docs/api/extensions.html
     import {Editor, EditorContent, EditorMenuBar} from 'tiptap'
+    import {Mention} from 'tiptap-extensions'
 
     // noinspection JSUnusedGlobalSymbols
     export default {
@@ -42,6 +48,14 @@
             value: {
                 type: Object,
                 default: () => ({}),
+            },
+            disabled: {
+                type: Boolean,
+                default: false,
+            },
+            outputFormat: {
+                type: String,
+                default: 'JSON',
             },
             extensions: {
                 type: Array,
@@ -52,7 +66,43 @@
                     'Underline',
                     {
                         'Heading': {
-                            levels: [1, 2],
+                            levels: [1, 2, 3],
+                        },
+                    },
+                    {
+                        'Mention': {
+                            items: async () => {
+                                debugger
+                                await new Promise(resolve => {
+                                    setTimeout(resolve, 500)
+                                })
+                                return [
+                                    { id: 1, name: 'Sven Adlung' },
+                                    { id: 2, name: 'Patrick Baber' },
+                                    { id: 3, name: 'Nick Hirche' },
+                                    { id: 4, name: 'Philip Isik' },
+                                    { id: 5, name: 'Timo Isik' },
+                                    { id: 6, name: 'Philipp Kühn' },
+                                    { id: 7, name: 'Hans Pagel' },
+                                    { id: 8, name: 'Sebastian Schrama' },
+                                ]
+                            },
+                            onEnter: (enter) => {
+                                debugger
+                            },
+                            onChange: (change) => {
+                                debugger
+                            },
+                            onExit: (exit) => {
+                                debugger
+                            },
+                            // is called on every keyDown event while a suggestion is active
+                            onKeyDown: (keydown) => {
+                                debugger
+                            },
+                            onFilter: async (items, query) => {
+                                debugger
+                            },
                         },
                     },
                 ]),
@@ -65,7 +115,6 @@
                         type: 'button',
                         tooltip: 'Annuler (Ctrl + Z)',
                         icon: 'mdi-undo',
-                        // active: isActive => isActive.undo(),
                         command: commands => commands.undo(),
                     },
                     {
@@ -73,7 +122,6 @@
                         type: 'button',
                         tooltip: 'Rétablir (Ctrl + Y)',
                         icon: 'mdi-redo',
-                        // active: isActive => isActive.redo(),
                         command: commands => commands.redo(),
                     },
                     {
@@ -111,24 +159,24 @@
                         type: 'button',
                         tooltip: 'Titre 1',
                         icon: 'mdi-format-header-1',
-                        active: isActive => isActive.heading({ level: 1 }),
-                        command: commands => commands.heading({ level: 1 }),
+                        active: isActive => isActive.heading({level: 1}),
+                        command: commands => commands.heading({level: 1}),
                     },
                     {
                         name: 'header-2',
                         type: 'button',
                         tooltip: 'Titre 2',
                         icon: 'mdi-format-header-2',
-                        active: isActive => isActive.heading({ level: 2 }),
-                        command: commands => commands.heading({ level: 2 }),
+                        active: isActive => isActive.heading({level: 2}),
+                        command: commands => commands.heading({level: 2}),
                     },
                     {
                         name: 'header-3',
                         type: 'button',
                         tooltip: 'Titre 3',
                         icon: 'mdi-format-header-3',
-                        active: isActive => isActive.heading({ level: 3 }),
-                        command: commands => commands.heading({ level: 3 }),
+                        active: isActive => isActive.heading({level: 3}),
+                        command: commands => commands.heading({level: 3}),
                     },
                 ]),
             },
@@ -141,14 +189,18 @@
 
         data() {
             return {
+                data: null,
                 editor: null,
+                showMenu: true
             }
         },
 
         watch: {
             value: {
                 handler(value) {
-                    this.editor.setContent(value || {})
+                    if (!_.isEqual(value, this.data)) {
+                        this.editor.setContent(value || {})
+                    }
                 },
                 deep: true,
             }
@@ -178,22 +230,41 @@
                     let instance = require('tiptap-extensions')[extName]
                     extensions.push(new instance())
                 } else if (_.isObject(extension)) {
-                    let key = Object.keys(extension)[0]
+                    let key = Object.keys(extension)
                     let args = Object.values(extension)
-                    let extName = _.upperFirst(key)
+                    let extName = _.upperFirst(key[0])
                     let instance = require('tiptap-extensions')[extName]
-                    extensions.push(new instance(args))
+                    extensions.push(new instance(args[0]))
                 }
             })
 
             this.editor = new Editor({
                 extensions,
-                onUpdate: ({getJSON}) => {
-                    this.$emit('input', getJSON())
-                }
+                editable: !this.disabled,
+                editorProps: {
+                    handleKeyDown: (view, event) => {
+                        this.$emit('keydown', event, view)
+                    },
+                },
+                onUpdate: update => {
+                    let output = 'get' + _.upperCase(this.outputFormat)
+                    this.data = update[output]()
+                    this.$emit('input', this.data, update)
+                },
+                onBlur: ({ event, view }) => {
+                    this.$emit('blur', event, view)
+                },
+                onFocus: ({ event, view }) => {
+                    this.$emit('focus', event, view)
+                },
             })
             this.editor.setContent(this.value || {})
-        }
+        },
+        beforeDestroy() {
+            if (this.editor) {
+                this.editor.destroy()
+            }
+        },
     }
 </script>
 

@@ -18,18 +18,14 @@
         data: () => ({
             editor: {
                 "type": "doc",
-                "content": [
-                    {
-                        "type": "heading",
-                        "attrs": {"level": 2},
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": "zzzz"
-                            }
-                        ]
-                    }
-                ],
+                "content": [{
+                    "type": "heading",
+                    "attrs": {"level": 2},
+                    "content": [{"type": "text", "text": "Vive Phalcon"}]
+                }, {
+                    "type": "paragraph",
+                    "content": [{"type": "text", "text": "Dans cet article je vais vous parler de Phalcon"}]
+                }]
             },
             actions: [
                 {
