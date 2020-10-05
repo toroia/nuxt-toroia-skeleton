@@ -15,7 +15,6 @@ v-card(v-bind="bindCardProps")
 
             v-spacer
 
-
             v-divider.ml-4.mr-1(vertical)
             v-menu
                 v-list(dense)
@@ -50,7 +49,7 @@ v-card(v-bind="bindCardProps")
         slot(name="toolbarAvatar" :toolbarAvatarSize="toolbarAvatarSize")
             slot(name="toolbarAvatar.left")
             v-badge(
-                color="green accent-4"
+                :color="setColorDispoEntity"
                 top
                 dot
                 offset-x="8"
@@ -82,7 +81,7 @@ v-card(v-bind="bindCardProps")
                 v-icon(small) mdi-thumb-down
             template
                 v-tooltip(top)
-                    span Tip appréciée à {{appreciation}}% des utilisateurs
+                    span Appréciée par {{appreciation}}% des utilisateurs
                     template(v-slot:activator="{ on, attrs }")
                         v-progress-linear(
                             background-color="error"
@@ -95,6 +94,7 @@ v-card(v-bind="bindCardProps")
                         )
             v-btn(icon small)
                 v-icon(small) mdi-thumb-up
+
             v-spacer
 
             v-btn(icon small)
@@ -128,6 +128,7 @@ v-card(v-bind="bindCardProps")
                     id: null,
                     cn: null,
                     type: null,
+                    dispo: null,
                     src: 'https://randomuser.me/api/portraits/men/77.jpg',
                 }),
             },
@@ -233,6 +234,14 @@ v-card(v-bind="bindCardProps")
                         return "mdi-account"
                     case 2:
                         return "mdi-city"
+                }
+            },
+            setColorDispoEntity() {
+                switch (this.entity.dispo) {
+                    case "online":
+                        return "green accent-4"
+                    case "offline":
+                        return "grey accent-4"
                 }
             }
         }
