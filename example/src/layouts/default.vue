@@ -85,10 +85,6 @@
                             to: '/comments/commentnew'
                         },
                         {
-                            text: 'CommentList',
-                            to: '/comments/commentlist'
-                        },
-                        {
                             text: 'CommentRow',
                             to: '/comments/commentrow'
                         },
