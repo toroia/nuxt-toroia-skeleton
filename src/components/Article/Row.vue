@@ -63,7 +63,7 @@ v-card(v-bind="bindCardProps")
 
     v-card-text
         slot(name="content")
-        span.body-2(v-text="content")
+        span.body-2(v-html="content")
 
     v-toolbar(color="transparent" :height="toolbarTimeSize" flat)
         slot(name="toolbarTimer" :toolbarTimeSize="toolbarTimeSize")
