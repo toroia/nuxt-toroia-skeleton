@@ -19,3 +19,10 @@ exec: ## Starts a bash environment in an image
 	docker run -it --rm \
 		-v $(CURDIR):/app \
 		$(APP_IMAGE) bash
+
+publish: ## Publish new version of NPM package
+	docker run -it --rm \
+		-v $(CURDIR):/app \
+		-v $(CURDIR)/.docker/root:/root \
+		$(APP_IMAGE) .docker/usr/local/bin/package-next-version
+~

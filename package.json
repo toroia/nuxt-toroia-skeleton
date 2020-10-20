@@ -1,7 +1,7 @@
 {
     "name": "nuxt-toroia-skeleton",
-    "version": "1.0.0",
-    "description": "Private skeleton for Nuxt by Toroia",
+    "version": "0.0.1",
+    "description": "Skeleton for Nuxt by Toroia",
     "homepage": "https://www.toroia.fr/",
     "bugs": {
         "email": "contact@toroia.fr",
@@ -28,12 +28,8 @@
         "skeleton",
         "module"
     ],
-    "private": true,
-    "license": "UNLICENSED",
+    "license": "BSD",
     "main": "main.js",
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
-    },
     "dependencies": {
         "@nuxt/components": "^1.0.7",
         "@nuxtjs/auth": "^4.9.1",
@@ -48,16 +44,16 @@
         "vue-code-highlight": "^0.7.4"
     },
     "devDependencies": {
-        "nuxt": "latest",
         "@nuxtjs/module-test-utils": "latest",
+        "nuxt": "latest",
         "pug": "2.0.3",
         "pug-plain-loader": "^1.0.0"
     },
     "peerDependencies": {
+        "lodash": "^4",
         "vue": "^2.5",
         "vuetify": "^2",
-        "webpack": "^4",
-        "lodash": "^4"
+        "webpack": "^4"
     },
     "files": [
         "src",
