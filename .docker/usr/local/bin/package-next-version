@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# TODO implements parameter to choise a version
+
+# shellcheck disable=SC2046
+# shellcheck disable=SC2002
+yarn publish \
+    --new-version $(cat $(pwd)/package.json \
+        | jq --raw-output '.version' \
+        | awk -F. -v OFS=. '{$NF++;print}')
